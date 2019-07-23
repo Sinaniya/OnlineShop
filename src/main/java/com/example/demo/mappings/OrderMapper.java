@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper
 public interface OrderMapper {
 @Mapping(source="user.id", target = " userId")
-OrderDto toOrderDto(Order order);
+OrderDto toOrdersDto(List<Order> orders);
 
 @InheritConfiguration
     List<OrderDto> toTaskDto(List<Order> orders);

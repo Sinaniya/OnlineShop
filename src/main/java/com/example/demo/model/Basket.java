@@ -63,9 +63,6 @@ public class Basket implements Serializable {
     }
 
 
-
-
-
     public void addProduct(Product product){
         product.getBaskets().add(this);//+
         this.products.add(product);
@@ -76,6 +73,5 @@ public class Basket implements Serializable {
         this.products.remove(product);
         product.getBaskets().remove(this);
     }
-
 
 }

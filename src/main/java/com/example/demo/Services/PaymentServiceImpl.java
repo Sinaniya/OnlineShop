@@ -1,32 +1,37 @@
+
 package com.example.demo.Services;
 
+import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.Repository.PaymentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.model.Payment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
-public class PaymentServiceImpl implements PaymentService {
 
-    @Autowired
-   private PaymentRepository repository;
+public class PaymentServiceImpl implements PaymentService{
 
-
-}
-
-/*
-*
-* @Transactional
     @Override
-    public void delete (Order order){repository.deleteById(order.getId());}
+  private PaymentRepository repository;
+
+    @Override
+    public List<Payment> findAll() {return repository.findAll();}
+
+    @Transactional
+    @Override
+    public void delete (Payment payment){repository.deleteById(payment.getPaymentId());}
 
     @Transactional
     @Override
     public void deleteById(Long id){
-        Order order = repository.findOrderById(id).orElseThrow(()-> new ResourceNotFoundException("Resource Not Found!"));
-        repository.deleteById(order.getId());
+        Payment payment = repository.findPaymentById(id).orElseThrow(()-> new ResourceNotFoundException("Resource Not Found!"));
+        repository.deleteById(payment.getPaymentId());
 
     }
 
-* */
+}
+
+

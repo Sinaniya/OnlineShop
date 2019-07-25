@@ -1,12 +1,13 @@
-package com.example.demo.Services;
+package com.example.demo.services;
 
+import com.example.demo.model.Order;
 import com.example.demo.model.User;
 
 import java.util.List;
 
 public interface UserService {
     List<User> findAll();
-    List<User> filterbyName (String name);
+    List<User> filterByName(String name);
 
     void save (User user);
 
@@ -16,4 +17,7 @@ public interface UserService {
 
     void deleteById(long id);
 
+    void addOrder(long userId,Order order);
+
+    void removeOrder(long userId, Order order);
 }

@@ -1,6 +1,6 @@
-package com.example.demo.Controller;
+package com.example.demo.controller;
 
-import com.example.demo.Services.BasketService;
+import com.example.demo.services.BasketService;
 import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.mappings.BasketMapper;
 import com.example.demo.model.Basket;

@@ -9,17 +9,17 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper
+@Mapper(uses = {PaymentMapper.class, ProductMapper.class})
 public interface OrderMapper {
-@Mapping(source="user.id", target = " userId")
-OrderDto toOrdersDto(List<Order> orders);
+    @Mapping(source = "user.id", target = " userId")
+    OrderDto toOrderDto(Order order);
 
-@InheritConfiguration
-    List<OrderDto> toTaskDto(List<Order> orders);
+    @InheritConfiguration
+    List<OrderDto> toOrdersDto(List<Order> orders);
 
-@InheritInverseConfiguration
-    Order toOrder (OrderDto orderDto);
+    @InheritInverseConfiguration
+    Order toOrder(OrderDto orderDto);
 
-@InheritInverseConfiguration
-    List<Order> toOrders (List<OrderDto> orderDtoList);
+    @InheritInverseConfiguration
+    List<Order> toOrders(List<OrderDto> orderDtoList);
 }

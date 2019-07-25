@@ -2,8 +2,9 @@ package com.example.demo.model;
 
 
 import javax.persistence.*;
-import java.util.List;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table
 @Entity
@@ -11,15 +12,15 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  long id;
+    private long   id;
     private String userName;
     // @
 
-    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL, orphanRemoval = true)
-    private List<Basket> baskets;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Basket> baskets = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<Order> orders = new ArrayList<>();
 
     public User() {
     }
@@ -48,23 +49,24 @@ public class User implements Serializable {
         this.baskets = baskets;
     }
 
-    public List<Order> getOrder() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrder(List<Order> order) {
+    public void setOrders(List<Order> order) {
         this.orders = order;
     }
 
-    public void addOrder(Order order){
+    public void addOrder(Order order) {
         order.setUser(this);
         this.orders.add(order);
     }
-public void removeOrder(Order order){
+
+    public void removeOrder(Order order) {
         this.orders.remove(order);
         order.setUser(null); //+ add + remove basket
 
-}
+    }
 
 
 }

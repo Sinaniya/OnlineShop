@@ -1,9 +1,10 @@
 
-package com.example.demo.Services;
+package com.example.demo.services;
 
 import com.example.demo.exceptions.ResourceNotFoundException;
-import com.example.demo.Repository.PaymentRepository;
+import com.example.demo.repository.PaymentRepository;
 import com.example.demo.model.Payment;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,14 +12,19 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-
 public class PaymentServiceImpl implements PaymentService{
 
-    @Override
-  private PaymentRepository repository;
+    @Autowired private PaymentRepository repository;
 
     @Override
     public List<Payment> findAll() {return repository.findAll();}
+
+    @Transactional
+    @Override
+    public void save(Payment payment) {
+        repository.save(payment);
+
+    }
 
     @Transactional
     @Override
@@ -27,7 +33,7 @@ public class PaymentServiceImpl implements PaymentService{
     @Transactional
     @Override
     public void deleteById(Long id){
-        Payment payment = repository.findPaymentById(id).orElseThrow(()-> new ResourceNotFoundException("Resource Not Found!"));
+        Payment payment = repository.findByPaymentId(id).orElseThrow(()-> new ResourceNotFoundException("Resource Not Found!"));
         repository.deleteById(payment.getPaymentId());
 
     }

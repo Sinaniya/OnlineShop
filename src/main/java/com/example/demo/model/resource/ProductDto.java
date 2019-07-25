@@ -1,15 +1,15 @@
 package com.example.demo.model.resource;
 
-import com.example.demo.model.Basket;
-
 import java.io.Serializable;
 import java.util.List;
 
 public class ProductDto implements Serializable {
-    private long id;
-    private String name;
-    private List<BasketDto> baskets;
-public ProductDto (){
+    private long            id;
+    private String          name;
+    private List<Long> basketIds;
+    private List<Long> orderIds;
+
+    public ProductDto() {
     }
 
     public long getId() {
@@ -28,11 +28,19 @@ public ProductDto (){
         this.name = name;
     }
 
-    public List<BasketDto> getBaskets() {
-        return baskets;
+    public List<Long> getBasketIds() {
+        return basketIds;
     }
 
-    public void setBaskets(List<BasketDto> baskets) {
-        this.baskets = baskets;
+    public void setBasketIds(List<Long> basketIds) {
+        this.basketIds = basketIds;
+    }
+
+    public List<Long> getOrderIds() {
+        return orderIds;
+    }
+
+    public void setOrderIds(List<Long> orderIds) {
+        this.orderIds = orderIds;
     }
 }

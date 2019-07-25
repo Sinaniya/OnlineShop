@@ -1,7 +1,7 @@
- package com.example.demo.Controller;
+ package com.example.demo.controller;
 
 import com.example.demo.exceptions.ResourceNotFoundException;
-import com.example.demo.Services.PaymentService;
+import com.example.demo.services.PaymentService;
 import com.example.demo.mappings.PaymentMapper;
 import com.example.demo.model.Payment;
 import com.example.demo.model.resource.PaymentDto;
@@ -31,7 +31,7 @@ public class PaymentController {
     public ResponseEntity<PaymentDto> getPayment(@PathVariable("id") long id){
 
         Payment payment = service.findAll().stream().filter(u -> u.getPaymentId() == id).findFirst().orElseThrow(()-> new ResourceNotFoundException("Not found"));
-         return ResponseEntity.ok().body(mapper.toPaymentsDto(payment));
+         return ResponseEntity.ok().body(mapper.toPaymentDto(payment));
     }
 
     @CrossOrigin(origins = "http://localhost:3000")

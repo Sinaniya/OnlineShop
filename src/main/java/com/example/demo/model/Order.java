@@ -4,26 +4,25 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Table
+@Table(name = "OrderEntity")
 @Entity
 
 public class Order implements Serializable {
 
- @Id
- @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
 
-    @ManyToMany(mappedBy = "orders", cascade = CascadeType.ALL)
-     private List<Product> products;
+    @ManyToMany(mappedBy = "orders")
+    private List<Product> products;
 
-    @OneToMany(mappedBy = "project", cascade= CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Payment> payments;
 
-    @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn (name="user_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
     private User user;
-
 
 
     public long getId() {
@@ -60,8 +59,7 @@ public class Order implements Serializable {
     }
 
 
-
-    public void addProduct(Product product){
+    public void addProduct(Product product) {
 
         product.getOrders().add(this);
         this.products.add(product);
@@ -70,15 +68,16 @@ public class Order implements Serializable {
 
     public void removeProduct(Product product) {
         this.products.remove(product);
-       product.getOrders().remove(this);
+        product.getOrders().remove(this);
     }
 
-    public void addPayment(Payment paymnet){
+    public void addPayment(Payment paymnet) {
 
         paymnet.setOrder(this);
         this.payments.add(paymnet);
     }
-    public void removePaymnet(Payment payment){
+
+    public void removePaymnet(Payment payment) {
 
         this.payments.remove(payment);
         payment.setOrder(null);

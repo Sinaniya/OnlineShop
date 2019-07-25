@@ -4,11 +4,12 @@ import java.io.Serializable;
 
 public class PaymentDto implements Serializable {
 
-    private long id;
+    private long    id;
     private boolean done;
-    private long OrderId;
+    private long    orderId;
 
-    public PaymentDto (){}
+    public PaymentDto() {
+    }
 
     public long getId() {
         return id;
@@ -27,10 +28,10 @@ public class PaymentDto implements Serializable {
     }
 
     public long getOrderId() {
-        return OrderId;
+        return orderId;
     }
 
     public void setOrderId(long orderId) {
-        OrderId = orderId;
+        this.orderId = orderId;
     }
 }

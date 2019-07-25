@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 public class BasketDto implements Serializable {
-    private long id;
-    private String name;
-    private List<UserDto> users;
-    private List<PaymentDto> payments;
+    private long             id;
+    private String           name;
+    private long             userId;
+    private List<ProductDto> products;
 
     public BasketDto() {
     }
@@ -28,19 +28,19 @@ public class BasketDto implements Serializable {
         this.name = name;
     }
 
-    public List<UserDto> getUsers() {
-        return users;
+    public List<ProductDto> getProducts() {
+        return products;
     }
 
-    public void setUsers(List<UserDto> users) {
-        this.users = users;
+    public void setProducts(List<ProductDto> products) {
+        this.products = products;
     }
 
-    public List<PaymentDto> getPayments() {
-        return payments;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setPayments(List<PaymentDto> payments) {
-        this.payments = payments;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }

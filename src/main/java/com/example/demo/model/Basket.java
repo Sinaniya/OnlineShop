@@ -23,8 +23,8 @@ public class Basket implements Serializable {
     @JoinColumn(name="user_id")
     private User user;
 
-    @ManyToMany(mappedBy = "baskets" , cascade= CascadeType.ALL)
-    private List<Product> products;
+    @ManyToMany(mappedBy = "baskets")
+    private List<Product> products = new ArrayList<>();
 
 
     public Basket() {

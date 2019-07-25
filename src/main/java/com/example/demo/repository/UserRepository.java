@@ -1,4 +1,4 @@
-package com.example.demo.Repository;
+package com.example.demo.repository;
 
 import com.example.demo.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRpository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findUserById(long id);
 
-    Optional findUserByUserName(String name);
+    Optional<User> findUserByUserName(String name);
 
-@Query("select u from User u where u.userName like :name%")
-List<User> findUsersByUserName(@Param("name") String name );
+    @Query("select u from User u where u.userName like :name%")
+    List<User> findUsersByUserName(@Param("name") String name);
 }

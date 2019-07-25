@@ -1,4 +1,4 @@
-package com.example.demo.Repository;
+package com.example.demo.repository;
 
 import com.example.demo.model.Basket;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,8 +14,8 @@ import java.util.Optional;
 public interface BasketRepository extends JpaRepository<Basket, Long> {
 
     Optional<Basket> findBasketById(long id);
-    Optional<Basket> findBasketsByName(String Name);
+    Optional<Basket> findBasketByName(String Name);
 
     @Query("select b from Basket b where b.name like :name%")
-    List<Basket> findBaskesByName (@Param("name") String name);
+    List<Basket> findBasketsByName(@Param("name") String name);
 }

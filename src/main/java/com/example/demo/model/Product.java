@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -11,8 +12,9 @@ public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long productId;
+    private long   id;
     private String name;
+    private long count;
 
 
 
@@ -21,20 +23,21 @@ public class Product implements Serializable {
    // private List<Basket> basket;
 
     @ManyToMany(fetch= FetchType.LAZY)
-    private List<Order> orders;
+    private List<Order> orders = new ArrayList<>();
 
 
     @ManyToMany(fetch= FetchType.LAZY)
-    //@JoinColumn (name="basket_id")
-    private List<Basket> baskets;
+    private List<Basket> baskets = new ArrayList<>();
 
 
-    public long getProductId() {
-        return productId;
+    public long getId() {
+
+        return id;
+
     }
 
-    public void setProductId(long productId) {
-        this.productId = productId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

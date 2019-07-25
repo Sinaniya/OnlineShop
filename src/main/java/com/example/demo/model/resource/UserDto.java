@@ -5,9 +5,10 @@ import java.util.List;
 
 public class UserDto implements Serializable {
 
-private long id;
-private String name;
-private List<OrderDto> orders;
+    private long            id;
+    private String          name;
+    private List<OrderDto>  orders;
+    private List<BasketDto> baskets;
 
     public UserDto() {
     }
@@ -35,5 +36,13 @@ private List<OrderDto> orders;
 
     public void setOrders(List<OrderDto> orders) {
         this.orders = orders;
+    }
+
+    public List<BasketDto> getBaskets() {
+        return baskets;
+    }
+
+    public void setBaskets(List<BasketDto> baskets) {
+        this.baskets = baskets;
     }
 }

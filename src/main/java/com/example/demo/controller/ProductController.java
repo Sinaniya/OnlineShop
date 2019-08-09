@@ -39,6 +39,14 @@ public class ProductController {
     }
 
 
+    @PutMapping("products")
+    public ResponseEntity update(@RequestBody ProductDto productDto){
+        service.
+
+    }
+
+
+
 }
 
 

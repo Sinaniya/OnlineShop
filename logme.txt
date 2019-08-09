@@ -1169,3 +1169,1648 @@ java.lang.RuntimeException: User already exists
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
+2019-08-09 14:08:52.552  WARN 10020 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m35s796ms118µs100ns).
+2019-08-09 14:08:52.554 DEBUG 10020 --- [http-nio-5055-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        User as generatedAlias0 
+    where
+        generatedAlias0.userName=:param0 */ select
+            user0_.id as id1_6_,
+            user0_.user_name as user_nam2_6_ 
+        from
+            user user0_ 
+        where
+            user0_.user_name=?
+2019-08-09 14:08:52.554 TRACE 10020 --- [http-nio-5055-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [User1]
+2019-08-09 14:08:52.555 TRACE 10020 --- [http-nio-5055-exec-3] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_6_] : [BIGINT]) - [1]
+2019-08-09 14:08:52.567 TRACE 10020 --- [http-nio-5055-exec-3] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([user_nam2_6_] : [VARCHAR]) - [user1]
+2019-08-09 14:08:52.568 TRACE 10020 --- [http-nio-5055-exec-3] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.User.baskets#1]
+2019-08-09 14:08:52.568 TRACE 10020 --- [http-nio-5055-exec-3] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.User.orders#1]
+2019-08-09 14:08:52.569 DEBUG 10020 --- [http-nio-5055-exec-3] org.hibernate.SQL                        : 
+    select
+        orders0_.user_id as user_id2_1_0_,
+        orders0_.id as id1_1_0_,
+        orders0_.id as id1_1_1_,
+        orders0_.user_id as user_id2_1_1_ 
+    from
+        order_entity orders0_ 
+    where
+        orders0_.user_id=?
+2019-08-09 14:08:52.575 TRACE 10020 --- [http-nio-5055-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2019-08-09 14:08:52.578 ERROR 10020 --- [http-nio-5055-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: User already exists] with root cause
+
+java.lang.RuntimeException: User already exists
+	at com.example.demo.services.UserServiceImpl.save(UserServiceImpl.java:46) ~[classes/:na]
+	at com.example.demo.services.UserServiceImpl$$FastClassBySpringCGLIB$$44ca2174.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:295) ~[spring-tx-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98) ~[spring-tx-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at com.example.demo.services.UserServiceImpl$$EnhancerBySpringCGLIB$$71f0b898.save(<generated>) ~[classes/:na]
+	at com.example.demo.controller.UserController.create(UserController.java:34) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:892) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1039) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:836) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1747) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2019-08-09 14:09:01.498 DEBUG 10020 --- [http-nio-5055-exec-7] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        User as generatedAlias0 
+    where
+        generatedAlias0.userName=:param0 */ select
+            user0_.id as id1_6_,
+            user0_.user_name as user_nam2_6_ 
+        from
+            user user0_ 
+        where
+            user0_.user_name=?
+2019-08-09 14:09:01.504 TRACE 10020 --- [http-nio-5055-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [User1]
+2019-08-09 14:09:01.512 TRACE 10020 --- [http-nio-5055-exec-7] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_6_] : [BIGINT]) - [1]
+2019-08-09 14:09:01.513 TRACE 10020 --- [http-nio-5055-exec-7] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([user_nam2_6_] : [VARCHAR]) - [user1]
+2019-08-09 14:09:01.513 TRACE 10020 --- [http-nio-5055-exec-7] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.User.baskets#1]
+2019-08-09 14:09:01.513 TRACE 10020 --- [http-nio-5055-exec-7] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.User.orders#1]
+2019-08-09 14:09:01.522 DEBUG 10020 --- [http-nio-5055-exec-7] org.hibernate.SQL                        : 
+    select
+        orders0_.user_id as user_id2_1_0_,
+        orders0_.id as id1_1_0_,
+        orders0_.id as id1_1_1_,
+        orders0_.user_id as user_id2_1_1_ 
+    from
+        order_entity orders0_ 
+    where
+        orders0_.user_id=?
+2019-08-09 14:09:01.524 TRACE 10020 --- [http-nio-5055-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2019-08-09 14:09:01.530 ERROR 10020 --- [http-nio-5055-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: User already exists] with root cause
+
+java.lang.RuntimeException: User already exists
+	at com.example.demo.services.UserServiceImpl.save(UserServiceImpl.java:46) ~[classes/:na]
+	at com.example.demo.services.UserServiceImpl$$FastClassBySpringCGLIB$$44ca2174.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:295) ~[spring-tx-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98) ~[spring-tx-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at com.example.demo.services.UserServiceImpl$$EnhancerBySpringCGLIB$$71f0b898.save(<generated>) ~[classes/:na]
+	at com.example.demo.controller.UserController.create(UserController.java:34) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:892) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1039) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:836) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1747) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2019-08-09 14:09:20.837 DEBUG 10020 --- [http-nio-5055-exec-8] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        User as generatedAlias0 
+    where
+        generatedAlias0.userName=:param0 */ select
+            user0_.id as id1_6_,
+            user0_.user_name as user_nam2_6_ 
+        from
+            user user0_ 
+        where
+            user0_.user_name=?
+2019-08-09 14:09:20.848 TRACE 10020 --- [http-nio-5055-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [User2]
+2019-08-09 14:09:20.874 DEBUG 10020 --- [http-nio-5055-exec-8] org.hibernate.SQL                        : 
+    /* insert com.example.demo.model.User
+        */ insert 
+        into
+            user
+            (user_name) 
+        values
+            (?)
+2019-08-09 14:09:20.874 TRACE 10020 --- [http-nio-5055-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [User2]
+2019-08-09 14:10:50.478 DEBUG 10020 --- [http-nio-5055-exec-9] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        User as generatedAlias0 
+    where
+        generatedAlias0.userName=:param0 */ select
+            user0_.id as id1_6_,
+            user0_.user_name as user_nam2_6_ 
+        from
+            user user0_ 
+        where
+            user0_.user_name=?
+2019-08-09 14:10:50.479 TRACE 10020 --- [http-nio-5055-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [User3]
+2019-08-09 14:10:50.481 DEBUG 10020 --- [http-nio-5055-exec-9] org.hibernate.SQL                        : 
+    /* insert com.example.demo.model.User
+        */ insert 
+        into
+            user
+            (user_name) 
+        values
+            (?)
+2019-08-09 14:10:50.481 TRACE 10020 --- [http-nio-5055-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [User3]
+2019-08-09 14:28:54.095 DEBUG 10020 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    /* insert com.example.demo.model.Product
+        */ insert 
+        into
+            product
+            (count, name) 
+        values
+            (?, ?)
+2019-08-09 14:28:54.105 TRACE 10020 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:28:54.105 TRACE 10020 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [Product1]
+2019-08-09 14:29:05.142 DEBUG 10020 --- [http-nio-5055-exec-1] org.hibernate.SQL                        : 
+    /* insert com.example.demo.model.Product
+        */ insert 
+        into
+            product
+            (count, name) 
+        values
+            (?, ?)
+2019-08-09 14:29:05.148 TRACE 10020 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:29:05.158 TRACE 10020 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [Product1]
+2019-08-09 14:37:08.924  INFO 14824 --- [main] com.example.demo.OnlineshopApplication   : Starting OnlineshopApplication on DESKTOP-U8MH8K3 with PID 14824 (C:\Users\Sina\Documents\projects\Java\OnlinShop\target\classes started by Sina in C:\Users\Sina\Documents\projects\Java\OnlinShop)
+2019-08-09 14:37:08.927  INFO 14824 --- [main] com.example.demo.OnlineshopApplication   : No active profile set, falling back to default profiles: default
+2019-08-09 14:37:09.786  INFO 14824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-08-09 14:37:09.879  INFO 14824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84ms. Found 5 repository interfaces.
+2019-08-09 14:37:10.148  INFO 14824 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b0e5cf3f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-09 14:37:10.448  INFO 14824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5055 (http)
+2019-08-09 14:37:10.472  INFO 14824 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-09 14:37:10.472  INFO 14824 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.19]
+2019-08-09 14:37:10.573  INFO 14824 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-09 14:37:10.573  INFO 14824 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1596 ms
+2019-08-09 14:37:10.719  INFO 14824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-08-09 14:37:11.022  INFO 14824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-08-09 14:37:11.072  INFO 14824 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-09 14:37:11.122  INFO 14824 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.9.Final}
+2019-08-09 14:37:11.124  INFO 14824 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-08-09 14:37:11.281  INFO 14824 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-08-09 14:37:11.321 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@b808af5
+2019-08-09 14:37:11.321 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@b808af5
+2019-08-09 14:37:11.321 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@b808af5
+2019-08-09 14:37:11.322 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@3eee08f5
+2019-08-09 14:37:11.322 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@6231f77a
+2019-08-09 14:37:11.323 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@3c4059a
+2019-08-09 14:37:11.324 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@18513c23
+2019-08-09 14:37:11.324 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@18513c23
+2019-08-09 14:37:11.329 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@18513c23
+2019-08-09 14:37:11.330 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@7fc1fd31
+2019-08-09 14:37:11.330 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@7fc1fd31
+2019-08-09 14:37:11.330 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@7fc1fd31
+2019-08-09 14:37:11.335 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@7df3da0b
+2019-08-09 14:37:11.337 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@7df3da0b
+2019-08-09 14:37:11.337 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@7df3da0b
+2019-08-09 14:37:11.339 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@727dcc64
+2019-08-09 14:37:11.344 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@727dcc64
+2019-08-09 14:37:11.344 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@727dcc64
+2019-08-09 14:37:11.345 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@2e426dd2
+2019-08-09 14:37:11.345 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@2e426dd2
+2019-08-09 14:37:11.345 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@2e426dd2
+2019-08-09 14:37:11.347 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@1d806de6
+2019-08-09 14:37:11.347 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@1d806de6
+2019-08-09 14:37:11.347 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@1d806de6
+2019-08-09 14:37:11.348 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@15371de2
+2019-08-09 14:37:11.349 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@15371de2
+2019-08-09 14:37:11.349 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@15371de2
+2019-08-09 14:37:11.351 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@2e7a9db7
+2019-08-09 14:37:11.351 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@2e7a9db7
+2019-08-09 14:37:11.352 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@19f497aa
+2019-08-09 14:37:11.352 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@19f497aa
+2019-08-09 14:37:11.353 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@60a6840c
+2019-08-09 14:37:11.353 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@60a6840c
+2019-08-09 14:37:11.354 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@2ceb68a1
+2019-08-09 14:37:11.354 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@2e3900dc
+2019-08-09 14:37:11.355 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@241d1052
+2019-08-09 14:37:11.356 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@241d1052
+2019-08-09 14:37:11.356 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@431babe6
+2019-08-09 14:37:11.357 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@431babe6
+2019-08-09 14:37:11.357 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@70c31b17
+2019-08-09 14:37:11.357 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@70c31b17
+2019-08-09 14:37:11.359 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@4c2bea52
+2019-08-09 14:37:11.359 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@4c2bea52
+2019-08-09 14:37:11.359 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@6ae42248
+2019-08-09 14:37:11.359 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@6ae42248
+2019-08-09 14:37:11.360 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@13ee97af
+2019-08-09 14:37:11.360 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@13ee97af
+2019-08-09 14:37:11.361 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@2976ef56
+2019-08-09 14:37:11.366 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@2976ef56
+2019-08-09 14:37:11.367 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@6e49b011
+2019-08-09 14:37:11.367 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@6e49b011
+2019-08-09 14:37:11.370 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@5e8f0f98
+2019-08-09 14:37:11.370 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@5e8f0f98
+2019-08-09 14:37:11.371 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@4491eaeb
+2019-08-09 14:37:11.372 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@4491eaeb
+2019-08-09 14:37:11.373 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@1255de25
+2019-08-09 14:37:11.373 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@1255de25
+2019-08-09 14:37:11.374 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@32c0fecc
+2019-08-09 14:37:11.374 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@32c0fecc
+2019-08-09 14:37:11.374 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@32c0fecc
+2019-08-09 14:37:11.375 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@498e41a4
+2019-08-09 14:37:11.376 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@4b9f7edc
+2019-08-09 14:37:11.377 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@4b9f7edc
+2019-08-09 14:37:11.377 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@4b9f7edc
+2019-08-09 14:37:11.378 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@389008d1
+2019-08-09 14:37:11.378 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@32328dc4
+2019-08-09 14:37:11.379 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@32328dc4
+2019-08-09 14:37:11.379 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@681d704e
+2019-08-09 14:37:11.380 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@681d704e
+2019-08-09 14:37:11.380 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@1f1fbc9f
+2019-08-09 14:37:11.380 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@1f1fbc9f
+2019-08-09 14:37:11.381 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@24b3f778
+2019-08-09 14:37:11.382 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@24b3f778
+2019-08-09 14:37:11.383 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@42a05533
+2019-08-09 14:37:11.383 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@42a05533
+2019-08-09 14:37:11.384 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@18cbc3c2
+2019-08-09 14:37:11.385 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@5c997de8
+2019-08-09 14:37:11.385 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@5c997de8
+2019-08-09 14:37:11.386 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@5c997de8
+2019-08-09 14:37:11.387 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@537b3be1
+2019-08-09 14:37:11.388 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@537b3be1
+2019-08-09 14:37:11.388 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@537b3be1
+2019-08-09 14:37:11.388 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@3ca278bc
+2019-08-09 14:37:11.389 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@1f68e4e8
+2019-08-09 14:37:11.389 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@7b52b18a
+2019-08-09 14:37:11.389 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@7b52b18a
+2019-08-09 14:37:11.389 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@7b52b18a
+2019-08-09 14:37:11.390 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@654b899f
+2019-08-09 14:37:11.390 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@654b899f
+2019-08-09 14:37:11.390 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@654b899f
+2019-08-09 14:37:11.390 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@6dc9a56e
+2019-08-09 14:37:11.391 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@510e4d79
+2019-08-09 14:37:11.392 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@5342eec5
+2019-08-09 14:37:11.392 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@5342eec5
+2019-08-09 14:37:11.392 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@4eac65db
+2019-08-09 14:37:11.393 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@73dbe25
+2019-08-09 14:37:11.393 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@73dbe25
+2019-08-09 14:37:11.394 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@6d7865d6
+2019-08-09 14:37:11.394 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@6d7865d6
+2019-08-09 14:37:11.395 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@21c34bf8
+2019-08-09 14:37:11.395 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@49d543a9
+2019-08-09 14:37:11.396 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@772f3a3f
+2019-08-09 14:37:11.401 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@1fb71788
+2019-08-09 14:37:11.402 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@1fb71788
+2019-08-09 14:37:11.403 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@b788dc2
+2019-08-09 14:37:11.403 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@58ec8271
+2019-08-09 14:37:11.404 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@a44effb
+2019-08-09 14:37:11.404 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@3ee258
+2019-08-09 14:37:11.404 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@4f676900
+2019-08-09 14:37:11.404 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@73a49597
+2019-08-09 14:37:11.405 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@5eb2972f
+2019-08-09 14:37:11.406 DEBUG 14824 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@29699283
+2019-08-09 14:37:11.484  INFO 14824 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-08-09 14:37:11.574 DEBUG 14824 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@d180961] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@4af7ac25]
+2019-08-09 14:37:11.920 DEBUG 14824 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@d180961] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@337cb81d]
+2019-08-09 14:37:12.432 TRACE 14824 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@337cb81d] for TypeConfiguration
+2019-08-09 14:37:12.438  INFO 14824 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-09 14:37:12.911  INFO 14824 --- [main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-08-09 14:37:13.222  WARN 14824 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-08-09 14:37:13.349  INFO 14824 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-08-09 14:37:13.494  INFO 14824 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-09 14:37:13.642  INFO 14824 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-08-09 14:37:13.655  INFO 14824 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-08-09 14:37:13.695  INFO 14824 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-08-09 14:37:13.901  INFO 14824 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: createUsingPOST_1
+2019-08-09 14:37:13.978  INFO 14824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5055 (http) with context path ''
+2019-08-09 14:37:13.981  INFO 14824 --- [main] com.example.demo.OnlineshopApplication   : Started OnlineshopApplication in 5.565 seconds (JVM running for 6.893)
+2019-08-09 14:37:23.714  INFO 14824 --- [http-nio-5055-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-08-09 14:37:23.720  INFO 14824 --- [http-nio-5055-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-08-09 14:37:23.729  INFO 14824 --- [http-nio-5055-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2019-08-09 14:38:17.998 DEBUG 14824 --- [http-nio-5055-exec-9] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Product as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            product0_.id as id1_3_,
+            product0_.count as count2_3_,
+            product0_.name as name3_3_ 
+        from
+            product product0_ 
+        where
+            product0_.id=?
+2019-08-09 14:38:18.006 TRACE 14824 --- [http-nio-5055-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:38:18.052 DEBUG 14824 --- [http-nio-5055-exec-9] org.hibernate.SQL                        : 
+    /* insert com.example.demo.model.Product
+        */ insert 
+        into
+            product
+            (count, name) 
+        values
+            (?, ?)
+2019-08-09 14:38:18.053 TRACE 14824 --- [http-nio-5055-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:38:18.056 TRACE 14824 --- [http-nio-5055-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [string]
+2019-08-09 14:38:27.841 DEBUG 14824 --- [http-nio-5055-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Product as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            product0_.id as id1_3_,
+            product0_.count as count2_3_,
+            product0_.name as name3_3_ 
+        from
+            product product0_ 
+        where
+            product0_.id=?
+2019-08-09 14:38:27.850 TRACE 14824 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:38:27.851 DEBUG 14824 --- [http-nio-5055-exec-1] org.hibernate.SQL                        : 
+    /* insert com.example.demo.model.Product
+        */ insert 
+        into
+            product
+            (count, name) 
+        values
+            (?, ?)
+2019-08-09 14:38:27.852 TRACE 14824 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:38:27.852 TRACE 14824 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [Product1]
+2019-08-09 14:38:48.089 DEBUG 14824 --- [http-nio-5055-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Product as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            product0_.id as id1_3_,
+            product0_.count as count2_3_,
+            product0_.name as name3_3_ 
+        from
+            product product0_ 
+        where
+            product0_.id=?
+2019-08-09 14:38:48.095 TRACE 14824 --- [http-nio-5055-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:38:48.106 DEBUG 14824 --- [http-nio-5055-exec-3] org.hibernate.SQL                        : 
+    /* insert com.example.demo.model.Product
+        */ insert 
+        into
+            product
+            (count, name) 
+        values
+            (?, ?)
+2019-08-09 14:38:48.107 TRACE 14824 --- [http-nio-5055-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:38:48.116 TRACE 14824 --- [http-nio-5055-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [Product1]
+2019-08-09 14:39:39.199 DEBUG 14824 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Product as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            product0_.id as id1_3_,
+            product0_.count as count2_3_,
+            product0_.name as name3_3_ 
+        from
+            product product0_ 
+        where
+            product0_.id=?
+2019-08-09 14:39:39.200 TRACE 14824 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:42:51.177  WARN 14824 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m30s253ms264µs200ns).
+2019-08-09 14:48:14.463  WARN 14824 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m47s94ms579µs900ns).
+2019-08-09 14:48:14.464 DEBUG 14824 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    /* insert com.example.demo.model.Product
+        */ insert 
+        into
+            product
+            (count, name) 
+        values
+            (?, ?)
+2019-08-09 14:48:14.471 TRACE 14824 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:48:14.471 TRACE 14824 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [Product1]
+2019-08-09 14:48:22.810 DEBUG 14824 --- [http-nio-5055-exec-2] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Product as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            product0_.id as id1_3_,
+            product0_.count as count2_3_,
+            product0_.name as name3_3_ 
+        from
+            product product0_ 
+        where
+            product0_.id=?
+2019-08-09 14:48:22.817 TRACE 14824 --- [http-nio-5055-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:48:33.567 DEBUG 14824 --- [http-nio-5055-exec-2] org.hibernate.SQL                        : 
+    /* insert com.example.demo.model.Product
+        */ insert 
+        into
+            product
+            (count, name) 
+        values
+            (?, ?)
+2019-08-09 14:48:33.567 TRACE 14824 --- [http-nio-5055-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:48:33.572 TRACE 14824 --- [http-nio-5055-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [Product1]
+2019-08-09 14:48:39.346  INFO 6032 --- [main] com.example.demo.OnlineshopApplication   : Starting OnlineshopApplication on DESKTOP-U8MH8K3 with PID 6032 (C:\Users\Sina\Documents\projects\Java\OnlinShop\target\classes started by Sina in C:\Users\Sina\Documents\projects\Java\OnlinShop)
+2019-08-09 14:48:39.352  INFO 6032 --- [main] com.example.demo.OnlineshopApplication   : No active profile set, falling back to default profiles: default
+2019-08-09 14:48:40.591  INFO 6032 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-08-09 14:48:40.670  INFO 6032 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71ms. Found 5 repository interfaces.
+2019-08-09 14:48:40.927  INFO 6032 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3817a175] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-09 14:48:41.154  INFO 6032 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5055 (http)
+2019-08-09 14:48:41.180  INFO 6032 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-09 14:48:41.181  INFO 6032 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.19]
+2019-08-09 14:48:41.293  INFO 6032 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-09 14:48:41.293  INFO 6032 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1880 ms
+2019-08-09 14:48:41.426  INFO 6032 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-08-09 14:48:41.663  INFO 6032 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-08-09 14:48:41.706  INFO 6032 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-09 14:48:41.749  INFO 6032 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.9.Final}
+2019-08-09 14:48:41.750  INFO 6032 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-08-09 14:48:41.881  INFO 6032 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-08-09 14:48:41.921 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@621dc63d
+2019-08-09 14:48:41.922 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@621dc63d
+2019-08-09 14:48:41.924 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@621dc63d
+2019-08-09 14:48:41.925 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@38ef1a0a
+2019-08-09 14:48:41.926 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@6ba0ee4a
+2019-08-09 14:48:41.927 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@6ec3d8e4
+2019-08-09 14:48:41.928 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@3f3c5ecd
+2019-08-09 14:48:41.928 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@3f3c5ecd
+2019-08-09 14:48:41.933 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@3f3c5ecd
+2019-08-09 14:48:41.934 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@146f3d22
+2019-08-09 14:48:41.934 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@146f3d22
+2019-08-09 14:48:41.935 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@146f3d22
+2019-08-09 14:48:41.936 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@503556cb
+2019-08-09 14:48:41.936 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@503556cb
+2019-08-09 14:48:41.936 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@503556cb
+2019-08-09 14:48:41.937 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@5922cff3
+2019-08-09 14:48:41.943 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@5922cff3
+2019-08-09 14:48:41.943 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@5922cff3
+2019-08-09 14:48:41.944 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@2d801d8
+2019-08-09 14:48:41.944 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@2d801d8
+2019-08-09 14:48:41.944 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@2d801d8
+2019-08-09 14:48:41.945 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@645ba24a
+2019-08-09 14:48:41.945 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@645ba24a
+2019-08-09 14:48:41.945 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@645ba24a
+2019-08-09 14:48:41.946 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@72f3f14c
+2019-08-09 14:48:41.946 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@72f3f14c
+2019-08-09 14:48:41.946 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@72f3f14c
+2019-08-09 14:48:41.947 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@280ecc33
+2019-08-09 14:48:41.947 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@280ecc33
+2019-08-09 14:48:41.948 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@6210666c
+2019-08-09 14:48:41.948 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@6210666c
+2019-08-09 14:48:41.949 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@4a336377
+2019-08-09 14:48:41.949 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@4a336377
+2019-08-09 14:48:41.950 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@7d537616
+2019-08-09 14:48:41.950 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@70485aa
+2019-08-09 14:48:41.951 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@29f3185c
+2019-08-09 14:48:41.951 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@29f3185c
+2019-08-09 14:48:41.952 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@50b4364
+2019-08-09 14:48:41.952 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@50b4364
+2019-08-09 14:48:41.952 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@401926df
+2019-08-09 14:48:41.953 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@401926df
+2019-08-09 14:48:41.953 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@61e14b53
+2019-08-09 14:48:41.953 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@61e14b53
+2019-08-09 14:48:41.954 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@7752c0e7
+2019-08-09 14:48:41.954 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@7752c0e7
+2019-08-09 14:48:41.957 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@79b7c350
+2019-08-09 14:48:41.957 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@79b7c350
+2019-08-09 14:48:41.959 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@2673487b
+2019-08-09 14:48:41.966 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@2673487b
+2019-08-09 14:48:41.968 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@1c90029b
+2019-08-09 14:48:41.968 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@1c90029b
+2019-08-09 14:48:41.970 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@1c4057f9
+2019-08-09 14:48:41.970 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@1c4057f9
+2019-08-09 14:48:41.971 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@56b05bd7
+2019-08-09 14:48:41.971 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@56b05bd7
+2019-08-09 14:48:41.974 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@794cb26b
+2019-08-09 14:48:41.974 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@794cb26b
+2019-08-09 14:48:41.975 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@1d3a03fe
+2019-08-09 14:48:41.975 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@1d3a03fe
+2019-08-09 14:48:41.975 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@1d3a03fe
+2019-08-09 14:48:41.976 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@d76099a
+2019-08-09 14:48:41.977 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@1857fe6c
+2019-08-09 14:48:41.977 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@1857fe6c
+2019-08-09 14:48:41.977 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@1857fe6c
+2019-08-09 14:48:41.978 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@4e2109fe
+2019-08-09 14:48:41.978 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@362a6aa5
+2019-08-09 14:48:41.978 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@362a6aa5
+2019-08-09 14:48:41.979 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@687b0ddc
+2019-08-09 14:48:41.979 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@687b0ddc
+2019-08-09 14:48:41.980 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@f9a5e3f
+2019-08-09 14:48:41.980 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@f9a5e3f
+2019-08-09 14:48:41.980 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@e72fb04
+2019-08-09 14:48:41.981 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@e72fb04
+2019-08-09 14:48:41.981 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@35e75f7a
+2019-08-09 14:48:41.981 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@35e75f7a
+2019-08-09 14:48:41.982 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@627bcd7e
+2019-08-09 14:48:41.983 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@cf10c92
+2019-08-09 14:48:41.983 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@cf10c92
+2019-08-09 14:48:41.983 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@cf10c92
+2019-08-09 14:48:41.984 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@6141647f
+2019-08-09 14:48:41.984 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@6141647f
+2019-08-09 14:48:41.984 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@6141647f
+2019-08-09 14:48:41.984 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@5fe5c68b
+2019-08-09 14:48:41.985 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@4f3fec43
+2019-08-09 14:48:41.985 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@2d47b06
+2019-08-09 14:48:41.985 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@2d47b06
+2019-08-09 14:48:41.985 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@2d47b06
+2019-08-09 14:48:41.986 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@213012a0
+2019-08-09 14:48:41.986 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@213012a0
+2019-08-09 14:48:41.986 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@213012a0
+2019-08-09 14:48:41.986 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@126a9a3d
+2019-08-09 14:48:41.986 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@51a719e7
+2019-08-09 14:48:41.987 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@38929da
+2019-08-09 14:48:41.987 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@38929da
+2019-08-09 14:48:41.988 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@42f9873e
+2019-08-09 14:48:41.990 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@48b3b1b8
+2019-08-09 14:48:41.990 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@48b3b1b8
+2019-08-09 14:48:41.991 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@646e6d07
+2019-08-09 14:48:41.991 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@646e6d07
+2019-08-09 14:48:41.991 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@6cc8c13c
+2019-08-09 14:48:41.991 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@16df9bde
+2019-08-09 14:48:41.992 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@2da5fdc
+2019-08-09 14:48:41.994 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@123ca460
+2019-08-09 14:48:41.994 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@123ca460
+2019-08-09 14:48:41.994 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@31e7afde
+2019-08-09 14:48:41.994 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@349f3ff7
+2019-08-09 14:48:41.994 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@2487e20
+2019-08-09 14:48:41.994 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@3c9f4376
+2019-08-09 14:48:41.995 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@308a9264
+2019-08-09 14:48:41.995 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@7da77305
+2019-08-09 14:48:41.995 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@3cdfbbef
+2019-08-09 14:48:41.995 DEBUG 6032 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@7a1ddbf1
+2019-08-09 14:48:42.052  INFO 6032 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-08-09 14:48:42.092 DEBUG 6032 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@5604b85] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@5df7a065]
+2019-08-09 14:48:42.332 DEBUG 6032 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@5604b85] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@729d6ee2]
+2019-08-09 14:48:42.717 TRACE 6032 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@729d6ee2] for TypeConfiguration
+2019-08-09 14:48:42.718  INFO 6032 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-09 14:48:43.156  INFO 6032 --- [main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-08-09 14:48:43.429  WARN 6032 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-08-09 14:48:43.536  INFO 6032 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-08-09 14:48:43.650  INFO 6032 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-09 14:48:43.791  INFO 6032 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-08-09 14:48:43.804  INFO 6032 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-08-09 14:48:43.859  INFO 6032 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-08-09 14:48:44.038  INFO 6032 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: createUsingPOST_1
+2019-08-09 14:48:44.096  INFO 6032 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5055 (http) with context path ''
+2019-08-09 14:48:44.098  INFO 6032 --- [main] com.example.demo.OnlineshopApplication   : Started OnlineshopApplication in 5.137 seconds (JVM running for 6.054)
+2019-08-09 14:48:51.765  INFO 3376 --- [main] com.example.demo.OnlineshopApplication   : Starting OnlineshopApplication on DESKTOP-U8MH8K3 with PID 3376 (C:\Users\Sina\Documents\projects\Java\OnlinShop\target\classes started by Sina in C:\Users\Sina\Documents\projects\Java\OnlinShop)
+2019-08-09 14:48:51.768  INFO 3376 --- [main] com.example.demo.OnlineshopApplication   : No active profile set, falling back to default profiles: default
+2019-08-09 14:48:52.558  INFO 3376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-08-09 14:48:52.640  INFO 3376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72ms. Found 5 repository interfaces.
+2019-08-09 14:48:52.923  INFO 3376 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ae2a7107] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-09 14:48:53.180  INFO 3376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5055 (http)
+2019-08-09 14:48:53.212  INFO 3376 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-09 14:48:53.213  INFO 3376 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.19]
+2019-08-09 14:48:53.310  INFO 3376 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-09 14:48:53.310  INFO 3376 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1500 ms
+2019-08-09 14:48:53.443  INFO 3376 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-08-09 14:48:53.706  INFO 3376 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-08-09 14:48:53.754  INFO 3376 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-09 14:48:53.804  INFO 3376 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.9.Final}
+2019-08-09 14:48:53.805  INFO 3376 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-08-09 14:48:53.922  INFO 3376 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-08-09 14:48:53.955 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@3722f39d
+2019-08-09 14:48:53.955 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@3722f39d
+2019-08-09 14:48:53.955 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@3722f39d
+2019-08-09 14:48:53.955 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@2c1ea7be
+2019-08-09 14:48:53.956 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@173a5fad
+2019-08-09 14:48:53.956 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@6fc0e448
+2019-08-09 14:48:53.957 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@7c0e4e4e
+2019-08-09 14:48:53.957 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@7c0e4e4e
+2019-08-09 14:48:53.961 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@7c0e4e4e
+2019-08-09 14:48:53.962 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@30fa8a6b
+2019-08-09 14:48:53.962 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@30fa8a6b
+2019-08-09 14:48:53.962 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@30fa8a6b
+2019-08-09 14:48:53.964 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@fde487b
+2019-08-09 14:48:53.964 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@fde487b
+2019-08-09 14:48:53.964 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@fde487b
+2019-08-09 14:48:53.965 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@1f6c4ae
+2019-08-09 14:48:53.971 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@1f6c4ae
+2019-08-09 14:48:53.971 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@1f6c4ae
+2019-08-09 14:48:53.973 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@246df37b
+2019-08-09 14:48:53.974 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@246df37b
+2019-08-09 14:48:53.974 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@246df37b
+2019-08-09 14:48:53.975 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@3c4059a
+2019-08-09 14:48:53.975 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@3c4059a
+2019-08-09 14:48:53.975 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@3c4059a
+2019-08-09 14:48:53.975 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@131c0b6f
+2019-08-09 14:48:53.975 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@131c0b6f
+2019-08-09 14:48:53.976 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@131c0b6f
+2019-08-09 14:48:53.976 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@304744a1
+2019-08-09 14:48:53.976 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@304744a1
+2019-08-09 14:48:53.977 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@7d7d8911
+2019-08-09 14:48:53.977 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@7d7d8911
+2019-08-09 14:48:53.977 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@236fd411
+2019-08-09 14:48:53.978 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@236fd411
+2019-08-09 14:48:53.978 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@727dcc64
+2019-08-09 14:48:53.978 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@61eab26b
+2019-08-09 14:48:53.979 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@35454c7a
+2019-08-09 14:48:53.979 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@35454c7a
+2019-08-09 14:48:53.979 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@3514ac7d
+2019-08-09 14:48:53.980 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@3514ac7d
+2019-08-09 14:48:53.980 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@3350ab4
+2019-08-09 14:48:53.980 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@3350ab4
+2019-08-09 14:48:53.981 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@5b0e9e0c
+2019-08-09 14:48:53.981 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@5b0e9e0c
+2019-08-09 14:48:53.982 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@3460e4ed
+2019-08-09 14:48:53.982 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@3460e4ed
+2019-08-09 14:48:53.983 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@2ceb68a1
+2019-08-09 14:48:53.983 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@2ceb68a1
+2019-08-09 14:48:53.983 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@75805562
+2019-08-09 14:48:53.988 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@75805562
+2019-08-09 14:48:53.990 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@3006bfb
+2019-08-09 14:48:53.990 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@3006bfb
+2019-08-09 14:48:53.994 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@4cf230bf
+2019-08-09 14:48:53.994 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@4cf230bf
+2019-08-09 14:48:53.996 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@1fa98a22
+2019-08-09 14:48:53.996 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@1fa98a22
+2019-08-09 14:48:54.000 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@10a0a1e
+2019-08-09 14:48:54.000 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@10a0a1e
+2019-08-09 14:48:54.001 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@19a7906c
+2019-08-09 14:48:54.002 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@19a7906c
+2019-08-09 14:48:54.002 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@19a7906c
+2019-08-09 14:48:54.003 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@25e6c22a
+2019-08-09 14:48:54.004 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@6bf0f70a
+2019-08-09 14:48:54.004 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@6bf0f70a
+2019-08-09 14:48:54.004 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@6bf0f70a
+2019-08-09 14:48:54.005 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@43ab0659
+2019-08-09 14:48:54.005 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@5f3ddc86
+2019-08-09 14:48:54.005 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@5f3ddc86
+2019-08-09 14:48:54.006 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@40738846
+2019-08-09 14:48:54.006 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@40738846
+2019-08-09 14:48:54.007 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@4cd5fc46
+2019-08-09 14:48:54.007 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@4cd5fc46
+2019-08-09 14:48:54.008 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@7c8df667
+2019-08-09 14:48:54.008 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@7c8df667
+2019-08-09 14:48:54.009 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@78f5cbc5
+2019-08-09 14:48:54.009 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@78f5cbc5
+2019-08-09 14:48:54.009 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@4b9f7edc
+2019-08-09 14:48:54.010 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@11bfd751
+2019-08-09 14:48:54.011 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@11bfd751
+2019-08-09 14:48:54.011 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@11bfd751
+2019-08-09 14:48:54.011 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@3a7469ca
+2019-08-09 14:48:54.012 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@3a7469ca
+2019-08-09 14:48:54.012 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@3a7469ca
+2019-08-09 14:48:54.012 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@3e6acec2
+2019-08-09 14:48:54.013 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@1f1fbc9f
+2019-08-09 14:48:54.013 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@24b3f778
+2019-08-09 14:48:54.013 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@24b3f778
+2019-08-09 14:48:54.013 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@24b3f778
+2019-08-09 14:48:54.014 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@42a05533
+2019-08-09 14:48:54.014 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@42a05533
+2019-08-09 14:48:54.014 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@42a05533
+2019-08-09 14:48:54.014 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@18cbc3c2
+2019-08-09 14:48:54.015 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@404009df
+2019-08-09 14:48:54.015 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@380fdcf2
+2019-08-09 14:48:54.016 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@380fdcf2
+2019-08-09 14:48:54.016 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@15d58530
+2019-08-09 14:48:54.017 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@1f68e4e8
+2019-08-09 14:48:54.017 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@1f68e4e8
+2019-08-09 14:48:54.019 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@39b85a73
+2019-08-09 14:48:54.020 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@39b85a73
+2019-08-09 14:48:54.021 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@654b899f
+2019-08-09 14:48:54.023 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@6dc9a56e
+2019-08-09 14:48:54.024 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@eb91027
+2019-08-09 14:48:54.026 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@73dbe25
+2019-08-09 14:48:54.026 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@73dbe25
+2019-08-09 14:48:54.026 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@149b53fa
+2019-08-09 14:48:54.026 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@73be4cdd
+2019-08-09 14:48:54.026 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@751686aa
+2019-08-09 14:48:54.026 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@638977e0
+2019-08-09 14:48:54.027 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@2dc3ece8
+2019-08-09 14:48:54.027 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@2c1a8529
+2019-08-09 14:48:54.027 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@6d7865d6
+2019-08-09 14:48:54.027 DEBUG 3376 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@45e639ee
+2019-08-09 14:48:54.089  INFO 3376 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-08-09 14:48:54.141 DEBUG 3376 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@5c25daad] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@6fdc2db6]
+2019-08-09 14:48:54.426 DEBUG 3376 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@5c25daad] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@253b1cbd]
+2019-08-09 14:48:54.837 TRACE 3376 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@253b1cbd] for TypeConfiguration
+2019-08-09 14:48:54.842  INFO 3376 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-09 14:48:55.280  INFO 3376 --- [main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-08-09 14:48:55.551  WARN 3376 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-08-09 14:48:55.666  INFO 3376 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-08-09 14:48:55.798  INFO 3376 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-09 14:48:55.940  INFO 3376 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-08-09 14:48:55.954  INFO 3376 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-08-09 14:48:55.981  INFO 3376 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-08-09 14:48:56.161  INFO 3376 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: createUsingPOST_1
+2019-08-09 14:48:56.214  INFO 3376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5055 (http) with context path ''
+2019-08-09 14:48:56.217  INFO 3376 --- [main] com.example.demo.OnlineshopApplication   : Started OnlineshopApplication in 4.859 seconds (JVM running for 6.193)
+2019-08-09 14:49:19.718  INFO 3376 --- [http-nio-5055-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-08-09 14:49:19.725  INFO 3376 --- [http-nio-5055-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-08-09 14:49:19.737  INFO 3376 --- [http-nio-5055-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2019-08-09 14:49:19.850 DEBUG 3376 --- [http-nio-5055-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Product as generatedAlias0 
+    where
+        generatedAlias0.name=:param0 */ select
+            product0_.id as id1_3_,
+            product0_.count as count2_3_,
+            product0_.name as name3_3_ 
+        from
+            product product0_ 
+        where
+            product0_.name=?
+2019-08-09 14:49:19.854 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [Product1]
+2019-08-09 14:49:19.859 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [1]
+2019-08-09 14:49:19.865 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:49:19.865 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product1]
+2019-08-09 14:49:19.866 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [2]
+2019-08-09 14:49:19.870 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:49:19.870 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product1]
+2019-08-09 14:49:19.870 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [4]
+2019-08-09 14:49:19.870 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:49:19.871 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product1]
+2019-08-09 14:49:19.871 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [5]
+2019-08-09 14:49:19.871 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:49:19.871 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product1]
+2019-08-09 14:49:19.876 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [6]
+2019-08-09 14:49:19.876 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:49:19.876 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product1]
+2019-08-09 14:49:19.876 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [7]
+2019-08-09 14:49:19.876 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:49:19.876 TRACE 3376 --- [http-nio-5055-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product1]
+2019-08-09 14:49:19.883 TRACE 3376 --- [http-nio-5055-exec-1] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#1]
+2019-08-09 14:49:19.883 TRACE 3376 --- [http-nio-5055-exec-1] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#1]
+2019-08-09 14:49:19.884 TRACE 3376 --- [http-nio-5055-exec-1] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#2]
+2019-08-09 14:49:19.884 TRACE 3376 --- [http-nio-5055-exec-1] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#2]
+2019-08-09 14:49:19.884 TRACE 3376 --- [http-nio-5055-exec-1] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#4]
+2019-08-09 14:49:19.884 TRACE 3376 --- [http-nio-5055-exec-1] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#4]
+2019-08-09 14:49:19.884 TRACE 3376 --- [http-nio-5055-exec-1] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#5]
+2019-08-09 14:49:19.884 TRACE 3376 --- [http-nio-5055-exec-1] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#5]
+2019-08-09 14:49:19.884 TRACE 3376 --- [http-nio-5055-exec-1] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#6]
+2019-08-09 14:49:19.884 TRACE 3376 --- [http-nio-5055-exec-1] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#6]
+2019-08-09 14:49:19.888 TRACE 3376 --- [http-nio-5055-exec-1] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#7]
+2019-08-09 14:49:19.889 TRACE 3376 --- [http-nio-5055-exec-1] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#7]
+2019-08-09 14:49:19.916 ERROR 3376 --- [http-nio-5055-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.IncorrectResultSizeDataAccessException: query did not return a unique result: 6; nested exception is javax.persistence.NonUniqueResultException: query did not return a unique result: 6] with root cause
+
+javax.persistence.NonUniqueResultException: query did not return a unique result: 6
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:128) ~[hibernate-core-5.3.9.Final.jar:5.3.9.Final]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181) ~[hibernate-core-5.3.9.Final.jar:5.3.9.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1561) ~[hibernate-core-5.3.9.Final.jar:5.3.9.Final]
+	at org.hibernate.query.criteria.internal.compile.CriteriaQueryTypeQueryAdapter.getSingleResult(CriteriaQueryTypeQueryAdapter.java:109) ~[hibernate-core-5.3.9.Final.jar:5.3.9.Final]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:214) ~[spring-data-jpa-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:91) ~[spring-data-jpa-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:136) ~[spring-data-jpa-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:125) ~[spring-data-jpa-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:605) ~[spring-data-commons-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.lambda$invoke$3(RepositoryFactorySupport.java:595) ~[spring-data-commons-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:595) ~[spring-data-commons-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:59) ~[spring-data-commons-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:295) ~[spring-tx-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98) ~[spring-tx-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:138) ~[spring-data-jpa-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.data.repository.core.support.SurroundingTransactionDetectorMethodInterceptor.invoke(SurroundingTransactionDetectorMethodInterceptor.java:61) ~[spring-data-commons-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at com.sun.proxy.$Proxy96.findProductByName(Unknown Source) ~[na:na]
+	at com.example.demo.services.ProductServiceImpl.save(ProductServiceImpl.java:30) ~[classes/:na]
+	at com.example.demo.services.ProductServiceImpl$$FastClassBySpringCGLIB$$2c685fc.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:295) ~[spring-tx-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98) ~[spring-tx-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at com.example.demo.services.ProductServiceImpl$$EnhancerBySpringCGLIB$$a80dc054.save(<generated>) ~[classes/:na]
+	at com.example.demo.controller.ProductController.create(ProductController.java:28) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:892) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1039) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:836) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1747) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2019-08-09 14:51:59.922 DEBUG 3376 --- [http-nio-5055-exec-2] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Product as generatedAlias0 
+    where
+        generatedAlias0.name=:param0 */ select
+            product0_.id as id1_3_,
+            product0_.count as count2_3_,
+            product0_.name as name3_3_ 
+        from
+            product product0_ 
+        where
+            product0_.name=?
+2019-08-09 14:51:59.923 TRACE 3376 --- [http-nio-5055-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [Product10]
+2019-08-09 14:51:59.951 DEBUG 3376 --- [http-nio-5055-exec-2] org.hibernate.SQL                        : 
+    /* insert com.example.demo.model.Product
+        */ insert 
+        into
+            product
+            (count, name) 
+        values
+            (?, ?)
+2019-08-09 14:51:59.952 TRACE 3376 --- [http-nio-5055-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [0]
+2019-08-09 14:51:59.953 TRACE 3376 --- [http-nio-5055-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [Product10]
+2019-08-09 14:52:04.378 DEBUG 3376 --- [http-nio-5055-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Product as generatedAlias0 
+    where
+        generatedAlias0.name=:param0 */ select
+            product0_.id as id1_3_,
+            product0_.count as count2_3_,
+            product0_.name as name3_3_ 
+        from
+            product product0_ 
+        where
+            product0_.name=?
+2019-08-09 14:52:04.383 TRACE 3376 --- [http-nio-5055-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [Product10]
+2019-08-09 14:52:04.385 TRACE 3376 --- [http-nio-5055-exec-3] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [8]
+2019-08-09 14:52:04.385 TRACE 3376 --- [http-nio-5055-exec-3] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:52:04.395 TRACE 3376 --- [http-nio-5055-exec-3] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product10]
+2019-08-09 14:52:04.396 TRACE 3376 --- [http-nio-5055-exec-3] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#8]
+2019-08-09 14:52:04.396 TRACE 3376 --- [http-nio-5055-exec-3] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#8]
+2019-08-09 14:52:04.403 ERROR 3376 --- [http-nio-5055-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: product already exists] with root cause
+
+java.lang.RuntimeException: product already exists
+	at com.example.demo.services.ProductServiceImpl.save(ProductServiceImpl.java:35) ~[classes/:na]
+	at com.example.demo.services.ProductServiceImpl$$FastClassBySpringCGLIB$$2c685fc.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:295) ~[spring-tx-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98) ~[spring-tx-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at com.example.demo.services.ProductServiceImpl$$EnhancerBySpringCGLIB$$a80dc054.save(<generated>) ~[classes/:na]
+	at com.example.demo.controller.ProductController.create(ProductController.java:28) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:892) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1039) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) ~[spring-webmvc-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.7.RELEASE.jar:5.1.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:836) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1747) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.19.jar:9.0.19]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2019-08-09 14:57:39.269 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Product as generatedAlias0 */ select
+            product0_.id as id1_3_,
+            product0_.count as count2_3_,
+            product0_.name as name3_3_ 
+        from
+            product product0_
+2019-08-09 14:57:39.272 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [1]
+2019-08-09 14:57:39.272 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:57:39.272 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product1]
+2019-08-09 14:57:39.279 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [2]
+2019-08-09 14:57:39.279 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:57:39.279 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product1]
+2019-08-09 14:57:39.279 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [3]
+2019-08-09 14:57:39.288 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:57:39.288 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [string]
+2019-08-09 14:57:39.288 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [4]
+2019-08-09 14:57:39.288 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:57:39.288 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product1]
+2019-08-09 14:57:39.288 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [5]
+2019-08-09 14:57:39.288 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:57:39.288 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product1]
+2019-08-09 14:57:39.297 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [6]
+2019-08-09 14:57:39.297 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:57:39.297 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product1]
+2019-08-09 14:57:39.297 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [7]
+2019-08-09 14:57:39.297 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:57:39.297 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product1]
+2019-08-09 14:57:39.297 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [8]
+2019-08-09 14:57:39.298 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 14:57:39.299 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product10]
+2019-08-09 14:57:39.299 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#1]
+2019-08-09 14:57:39.299 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#1]
+2019-08-09 14:57:39.300 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#2]
+2019-08-09 14:57:39.300 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#2]
+2019-08-09 14:57:39.300 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#3]
+2019-08-09 14:57:39.300 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#3]
+2019-08-09 14:57:39.300 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#4]
+2019-08-09 14:57:39.311 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#4]
+2019-08-09 14:57:39.312 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#5]
+2019-08-09 14:57:39.313 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#5]
+2019-08-09 14:57:39.313 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#6]
+2019-08-09 14:57:39.313 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#6]
+2019-08-09 14:57:39.313 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#7]
+2019-08-09 14:57:39.313 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#7]
+2019-08-09 14:57:39.314 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#8]
+2019-08-09 14:57:39.314 TRACE 3376 --- [http-nio-5055-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#8]
+2019-08-09 14:57:39.318 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        orders0_.products_id as products1_5_0_,
+        orders0_.orders_id as orders_i2_5_0_,
+        order1_.id as id1_1_1_,
+        order1_.user_id as user_id2_1_1_,
+        user2_.id as id1_6_2_,
+        user2_.user_name as user_nam2_6_2_ 
+    from
+        product_orders orders0_ 
+    inner join
+        order_entity order1_ 
+            on orders0_.orders_id=order1_.id 
+    left outer join
+        user user2_ 
+            on order1_.user_id=user2_.id 
+    where
+        orders0_.products_id=?
+2019-08-09 14:57:39.318 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2019-08-09 14:57:39.327 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        baskets0_.products_id as products1_4_0_,
+        baskets0_.baskets_id as baskets_2_4_0_,
+        basket1_.id as id1_0_1_,
+        basket1_.name as name2_0_1_,
+        basket1_.user_id as user_id3_0_1_ 
+    from
+        product_baskets baskets0_ 
+    inner join
+        basket basket1_ 
+            on baskets0_.baskets_id=basket1_.id 
+    where
+        baskets0_.products_id=?
+2019-08-09 14:57:39.327 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2019-08-09 14:57:39.339 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        orders0_.products_id as products1_5_0_,
+        orders0_.orders_id as orders_i2_5_0_,
+        order1_.id as id1_1_1_,
+        order1_.user_id as user_id2_1_1_,
+        user2_.id as id1_6_2_,
+        user2_.user_name as user_nam2_6_2_ 
+    from
+        product_orders orders0_ 
+    inner join
+        order_entity order1_ 
+            on orders0_.orders_id=order1_.id 
+    left outer join
+        user user2_ 
+            on order1_.user_id=user2_.id 
+    where
+        orders0_.products_id=?
+2019-08-09 14:57:39.340 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2019-08-09 14:57:39.342 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        baskets0_.products_id as products1_4_0_,
+        baskets0_.baskets_id as baskets_2_4_0_,
+        basket1_.id as id1_0_1_,
+        basket1_.name as name2_0_1_,
+        basket1_.user_id as user_id3_0_1_ 
+    from
+        product_baskets baskets0_ 
+    inner join
+        basket basket1_ 
+            on baskets0_.baskets_id=basket1_.id 
+    where
+        baskets0_.products_id=?
+2019-08-09 14:57:39.342 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2019-08-09 14:57:39.345 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        orders0_.products_id as products1_5_0_,
+        orders0_.orders_id as orders_i2_5_0_,
+        order1_.id as id1_1_1_,
+        order1_.user_id as user_id2_1_1_,
+        user2_.id as id1_6_2_,
+        user2_.user_name as user_nam2_6_2_ 
+    from
+        product_orders orders0_ 
+    inner join
+        order_entity order1_ 
+            on orders0_.orders_id=order1_.id 
+    left outer join
+        user user2_ 
+            on order1_.user_id=user2_.id 
+    where
+        orders0_.products_id=?
+2019-08-09 14:57:39.346 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [3]
+2019-08-09 14:57:39.347 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        baskets0_.products_id as products1_4_0_,
+        baskets0_.baskets_id as baskets_2_4_0_,
+        basket1_.id as id1_0_1_,
+        basket1_.name as name2_0_1_,
+        basket1_.user_id as user_id3_0_1_ 
+    from
+        product_baskets baskets0_ 
+    inner join
+        basket basket1_ 
+            on baskets0_.baskets_id=basket1_.id 
+    where
+        baskets0_.products_id=?
+2019-08-09 14:57:39.347 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [3]
+2019-08-09 14:57:39.348 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        orders0_.products_id as products1_5_0_,
+        orders0_.orders_id as orders_i2_5_0_,
+        order1_.id as id1_1_1_,
+        order1_.user_id as user_id2_1_1_,
+        user2_.id as id1_6_2_,
+        user2_.user_name as user_nam2_6_2_ 
+    from
+        product_orders orders0_ 
+    inner join
+        order_entity order1_ 
+            on orders0_.orders_id=order1_.id 
+    left outer join
+        user user2_ 
+            on order1_.user_id=user2_.id 
+    where
+        orders0_.products_id=?
+2019-08-09 14:57:39.348 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [4]
+2019-08-09 14:57:39.349 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        baskets0_.products_id as products1_4_0_,
+        baskets0_.baskets_id as baskets_2_4_0_,
+        basket1_.id as id1_0_1_,
+        basket1_.name as name2_0_1_,
+        basket1_.user_id as user_id3_0_1_ 
+    from
+        product_baskets baskets0_ 
+    inner join
+        basket basket1_ 
+            on baskets0_.baskets_id=basket1_.id 
+    where
+        baskets0_.products_id=?
+2019-08-09 14:57:39.349 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [4]
+2019-08-09 14:57:39.350 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        orders0_.products_id as products1_5_0_,
+        orders0_.orders_id as orders_i2_5_0_,
+        order1_.id as id1_1_1_,
+        order1_.user_id as user_id2_1_1_,
+        user2_.id as id1_6_2_,
+        user2_.user_name as user_nam2_6_2_ 
+    from
+        product_orders orders0_ 
+    inner join
+        order_entity order1_ 
+            on orders0_.orders_id=order1_.id 
+    left outer join
+        user user2_ 
+            on order1_.user_id=user2_.id 
+    where
+        orders0_.products_id=?
+2019-08-09 14:57:39.350 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [5]
+2019-08-09 14:57:39.351 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        baskets0_.products_id as products1_4_0_,
+        baskets0_.baskets_id as baskets_2_4_0_,
+        basket1_.id as id1_0_1_,
+        basket1_.name as name2_0_1_,
+        basket1_.user_id as user_id3_0_1_ 
+    from
+        product_baskets baskets0_ 
+    inner join
+        basket basket1_ 
+            on baskets0_.baskets_id=basket1_.id 
+    where
+        baskets0_.products_id=?
+2019-08-09 14:57:39.351 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [5]
+2019-08-09 14:57:39.352 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        orders0_.products_id as products1_5_0_,
+        orders0_.orders_id as orders_i2_5_0_,
+        order1_.id as id1_1_1_,
+        order1_.user_id as user_id2_1_1_,
+        user2_.id as id1_6_2_,
+        user2_.user_name as user_nam2_6_2_ 
+    from
+        product_orders orders0_ 
+    inner join
+        order_entity order1_ 
+            on orders0_.orders_id=order1_.id 
+    left outer join
+        user user2_ 
+            on order1_.user_id=user2_.id 
+    where
+        orders0_.products_id=?
+2019-08-09 14:57:39.352 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [6]
+2019-08-09 14:57:39.353 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        baskets0_.products_id as products1_4_0_,
+        baskets0_.baskets_id as baskets_2_4_0_,
+        basket1_.id as id1_0_1_,
+        basket1_.name as name2_0_1_,
+        basket1_.user_id as user_id3_0_1_ 
+    from
+        product_baskets baskets0_ 
+    inner join
+        basket basket1_ 
+            on baskets0_.baskets_id=basket1_.id 
+    where
+        baskets0_.products_id=?
+2019-08-09 14:57:39.360 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [6]
+2019-08-09 14:57:39.362 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        orders0_.products_id as products1_5_0_,
+        orders0_.orders_id as orders_i2_5_0_,
+        order1_.id as id1_1_1_,
+        order1_.user_id as user_id2_1_1_,
+        user2_.id as id1_6_2_,
+        user2_.user_name as user_nam2_6_2_ 
+    from
+        product_orders orders0_ 
+    inner join
+        order_entity order1_ 
+            on orders0_.orders_id=order1_.id 
+    left outer join
+        user user2_ 
+            on order1_.user_id=user2_.id 
+    where
+        orders0_.products_id=?
+2019-08-09 14:57:39.362 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [7]
+2019-08-09 14:57:39.363 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        baskets0_.products_id as products1_4_0_,
+        baskets0_.baskets_id as baskets_2_4_0_,
+        basket1_.id as id1_0_1_,
+        basket1_.name as name2_0_1_,
+        basket1_.user_id as user_id3_0_1_ 
+    from
+        product_baskets baskets0_ 
+    inner join
+        basket basket1_ 
+            on baskets0_.baskets_id=basket1_.id 
+    where
+        baskets0_.products_id=?
+2019-08-09 14:57:39.363 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [7]
+2019-08-09 14:57:39.365 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        orders0_.products_id as products1_5_0_,
+        orders0_.orders_id as orders_i2_5_0_,
+        order1_.id as id1_1_1_,
+        order1_.user_id as user_id2_1_1_,
+        user2_.id as id1_6_2_,
+        user2_.user_name as user_nam2_6_2_ 
+    from
+        product_orders orders0_ 
+    inner join
+        order_entity order1_ 
+            on orders0_.orders_id=order1_.id 
+    left outer join
+        user user2_ 
+            on order1_.user_id=user2_.id 
+    where
+        orders0_.products_id=?
+2019-08-09 14:57:39.365 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [8]
+2019-08-09 14:57:39.366 DEBUG 3376 --- [http-nio-5055-exec-4] org.hibernate.SQL                        : 
+    select
+        baskets0_.products_id as products1_4_0_,
+        baskets0_.baskets_id as baskets_2_4_0_,
+        basket1_.id as id1_0_1_,
+        basket1_.name as name2_0_1_,
+        basket1_.user_id as user_id3_0_1_ 
+    from
+        product_baskets baskets0_ 
+    inner join
+        basket basket1_ 
+            on baskets0_.baskets_id=basket1_.id 
+    where
+        baskets0_.products_id=?
+2019-08-09 14:57:39.367 TRACE 3376 --- [http-nio-5055-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [8]
+2019-08-09 15:06:14.359  INFO 16132 --- [main] com.example.demo.OnlineshopApplication   : Starting OnlineshopApplication on DESKTOP-U8MH8K3 with PID 16132 (C:\Users\Sina\Documents\projects\Java\OnlinShop\target\classes started by Sina in C:\Users\Sina\Documents\projects\Java\OnlinShop)
+2019-08-09 15:06:14.363  INFO 16132 --- [main] com.example.demo.OnlineshopApplication   : No active profile set, falling back to default profiles: default
+2019-08-09 15:06:15.514  INFO 16132 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-08-09 15:06:15.597  INFO 16132 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70ms. Found 5 repository interfaces.
+2019-08-09 15:06:15.827  INFO 16132 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5ff39a59] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-09 15:06:16.073  INFO 16132 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5055 (http)
+2019-08-09 15:06:16.097  INFO 16132 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-09 15:06:16.098  INFO 16132 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.19]
+2019-08-09 15:06:16.220  INFO 16132 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-09 15:06:16.220  INFO 16132 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1808 ms
+2019-08-09 15:06:16.352  INFO 16132 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-08-09 15:06:16.571  INFO 16132 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-08-09 15:06:16.617  INFO 16132 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-09 15:06:16.655  INFO 16132 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.9.Final}
+2019-08-09 15:06:16.658  INFO 16132 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-08-09 15:06:16.768  INFO 16132 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-08-09 15:06:16.801 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@5c0e2ec
+2019-08-09 15:06:16.801 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@5c0e2ec
+2019-08-09 15:06:16.801 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@5c0e2ec
+2019-08-09 15:06:16.802 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@344f9467
+2019-08-09 15:06:16.802 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@a4df251
+2019-08-09 15:06:16.802 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@55e42684
+2019-08-09 15:06:16.803 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@6728370a
+2019-08-09 15:06:16.803 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@6728370a
+2019-08-09 15:06:16.809 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@6728370a
+2019-08-09 15:06:16.811 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@1aeff8ca
+2019-08-09 15:06:16.812 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@1aeff8ca
+2019-08-09 15:06:16.812 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@1aeff8ca
+2019-08-09 15:06:16.816 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@6fbe4800
+2019-08-09 15:06:16.817 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@6fbe4800
+2019-08-09 15:06:16.817 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@6fbe4800
+2019-08-09 15:06:16.818 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@4b32465
+2019-08-09 15:06:16.823 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@4b32465
+2019-08-09 15:06:16.823 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@4b32465
+2019-08-09 15:06:16.824 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@60f9dc7e
+2019-08-09 15:06:16.824 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@60f9dc7e
+2019-08-09 15:06:16.824 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@60f9dc7e
+2019-08-09 15:06:16.827 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@57f0bfc3
+2019-08-09 15:06:16.828 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@57f0bfc3
+2019-08-09 15:06:16.828 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@57f0bfc3
+2019-08-09 15:06:16.829 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@f10d055
+2019-08-09 15:06:16.829 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@f10d055
+2019-08-09 15:06:16.829 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@f10d055
+2019-08-09 15:06:16.830 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@3c6bd624
+2019-08-09 15:06:16.830 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@3c6bd624
+2019-08-09 15:06:16.830 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@58fbcb71
+2019-08-09 15:06:16.830 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@58fbcb71
+2019-08-09 15:06:16.831 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@46524ebe
+2019-08-09 15:06:16.831 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@46524ebe
+2019-08-09 15:06:16.831 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@3c27f72
+2019-08-09 15:06:16.832 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@4aab7195
+2019-08-09 15:06:16.832 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@15f519f7
+2019-08-09 15:06:16.832 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@15f519f7
+2019-08-09 15:06:16.833 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@19d27c27
+2019-08-09 15:06:16.833 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@19d27c27
+2019-08-09 15:06:16.834 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@399f5daf
+2019-08-09 15:06:16.834 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@399f5daf
+2019-08-09 15:06:16.834 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@a0d875d
+2019-08-09 15:06:16.834 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@a0d875d
+2019-08-09 15:06:16.835 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@9dc782d
+2019-08-09 15:06:16.835 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@9dc782d
+2019-08-09 15:06:16.835 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@271e851e
+2019-08-09 15:06:16.836 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@271e851e
+2019-08-09 15:06:16.836 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@12f8682a
+2019-08-09 15:06:16.841 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@12f8682a
+2019-08-09 15:06:16.843 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@5368e981
+2019-08-09 15:06:16.843 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@5368e981
+2019-08-09 15:06:16.847 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@147c00aa
+2019-08-09 15:06:16.847 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@147c00aa
+2019-08-09 15:06:16.849 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@7cdfa824
+2019-08-09 15:06:16.849 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@7cdfa824
+2019-08-09 15:06:16.850 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@6076c66
+2019-08-09 15:06:16.850 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@6076c66
+2019-08-09 15:06:16.850 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@7440265c
+2019-08-09 15:06:16.851 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@7440265c
+2019-08-09 15:06:16.851 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@7440265c
+2019-08-09 15:06:16.851 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@48d44b46
+2019-08-09 15:06:16.852 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@69a73867
+2019-08-09 15:06:16.852 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@69a73867
+2019-08-09 15:06:16.852 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@69a73867
+2019-08-09 15:06:16.853 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@47f0f414
+2019-08-09 15:06:16.853 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@252c6cdb
+2019-08-09 15:06:16.853 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@252c6cdb
+2019-08-09 15:06:16.854 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@78bad03b
+2019-08-09 15:06:16.854 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@78bad03b
+2019-08-09 15:06:16.854 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@18bb1b88
+2019-08-09 15:06:16.854 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@18bb1b88
+2019-08-09 15:06:16.855 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@61554b6b
+2019-08-09 15:06:16.855 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@61554b6b
+2019-08-09 15:06:16.855 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@52f43225
+2019-08-09 15:06:16.855 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@52f43225
+2019-08-09 15:06:16.856 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@393ae7a0
+2019-08-09 15:06:16.860 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@21f91efa
+2019-08-09 15:06:16.860 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@21f91efa
+2019-08-09 15:06:16.860 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@21f91efa
+2019-08-09 15:06:16.863 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@70543cae
+2019-08-09 15:06:16.864 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@70543cae
+2019-08-09 15:06:16.864 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@70543cae
+2019-08-09 15:06:16.866 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@34b2d51a
+2019-08-09 15:06:16.867 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@2d4e99de
+2019-08-09 15:06:16.867 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@7f2ca6f8
+2019-08-09 15:06:16.867 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@7f2ca6f8
+2019-08-09 15:06:16.867 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@7f2ca6f8
+2019-08-09 15:06:16.868 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@3982206a
+2019-08-09 15:06:16.868 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@3982206a
+2019-08-09 15:06:16.868 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@3982206a
+2019-08-09 15:06:16.868 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@10f20d38
+2019-08-09 15:06:16.869 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@419f0ea
+2019-08-09 15:06:16.869 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@6c2883b1
+2019-08-09 15:06:16.870 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@6c2883b1
+2019-08-09 15:06:16.870 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@5529522f
+2019-08-09 15:06:16.871 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@789dd6bf
+2019-08-09 15:06:16.872 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@789dd6bf
+2019-08-09 15:06:16.874 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@7ab1ad9
+2019-08-09 15:06:16.874 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@7ab1ad9
+2019-08-09 15:06:16.875 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@603d25db
+2019-08-09 15:06:16.876 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@29c244e
+2019-08-09 15:06:16.879 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@6cc8c13c
+2019-08-09 15:06:16.881 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@2da5fdc
+2019-08-09 15:06:16.881 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@2da5fdc
+2019-08-09 15:06:16.882 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@615bad16
+2019-08-09 15:06:16.882 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@52856ff9
+2019-08-09 15:06:16.882 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@5aa7cfdf
+2019-08-09 15:06:16.882 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@1242d96b
+2019-08-09 15:06:16.882 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@2ecdf528
+2019-08-09 15:06:16.882 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@574ebdaf
+2019-08-09 15:06:16.882 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@33f349ae
+2019-08-09 15:06:16.882 DEBUG 16132 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@377e573a
+2019-08-09 15:06:16.938  INFO 16132 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-08-09 15:06:16.977 DEBUG 16132 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@114b203] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@8d810f2]
+2019-08-09 15:06:17.203 DEBUG 16132 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@114b203] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@b81938d]
+2019-08-09 15:06:17.637 TRACE 16132 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@b81938d] for TypeConfiguration
+2019-08-09 15:06:17.638  INFO 16132 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-09 15:06:18.003  INFO 16132 --- [main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-08-09 15:06:18.248  WARN 16132 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-08-09 15:06:18.353  INFO 16132 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-08-09 15:06:18.461  INFO 16132 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-09 15:06:18.588  INFO 16132 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-08-09 15:06:18.604  INFO 16132 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-08-09 15:06:18.631  INFO 16132 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-08-09 15:06:18.787  INFO 16132 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: createUsingPOST_1
+2019-08-09 15:06:18.836  INFO 16132 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5055 (http) with context path ''
+2019-08-09 15:06:18.851  INFO 16132 --- [main] com.example.demo.OnlineshopApplication   : Started OnlineshopApplication in 4.865 seconds (JVM running for 5.824)
+2019-08-09 15:06:49.341  INFO 16132 --- [http-nio-5055-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-08-09 15:06:49.348  INFO 16132 --- [http-nio-5055-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-08-09 15:06:49.359  INFO 16132 --- [http-nio-5055-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2019-08-09 15:06:58.156 DEBUG 16132 --- [http-nio-5055-exec-8] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Product as generatedAlias0 */ select
+            product0_.id as id1_3_,
+            product0_.count as count2_3_,
+            product0_.name as name3_3_ 
+        from
+            product product0_
+2019-08-09 15:06:58.181 TRACE 16132 --- [http-nio-5055-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [3]
+2019-08-09 15:06:58.190 TRACE 16132 --- [http-nio-5055-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 15:06:58.190 TRACE 16132 --- [http-nio-5055-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [string]
+2019-08-09 15:06:58.191 TRACE 16132 --- [http-nio-5055-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [8]
+2019-08-09 15:06:58.191 TRACE 16132 --- [http-nio-5055-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([count2_3_] : [BIGINT]) - [0]
+2019-08-09 15:06:58.196 TRACE 16132 --- [http-nio-5055-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_3_] : [VARCHAR]) - [Product10]
+2019-08-09 15:06:58.205 TRACE 16132 --- [http-nio-5055-exec-8] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#3]
+2019-08-09 15:06:58.206 TRACE 16132 --- [http-nio-5055-exec-8] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#3]
+2019-08-09 15:06:58.207 TRACE 16132 --- [http-nio-5055-exec-8] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.baskets#8]
+2019-08-09 15:06:58.208 TRACE 16132 --- [http-nio-5055-exec-8] org.hibernate.type.CollectionType        : Created collection wrapper: [com.example.demo.model.Product.orders#8]
+2019-08-09 15:06:58.215 DEBUG 16132 --- [http-nio-5055-exec-8] org.hibernate.SQL                        : 
+    select
+        orders0_.products_id as products1_5_0_,
+        orders0_.orders_id as orders_i2_5_0_,
+        order1_.id as id1_1_1_,
+        order1_.user_id as user_id2_1_1_,
+        user2_.id as id1_6_2_,
+        user2_.user_name as user_nam2_6_2_ 
+    from
+        product_orders orders0_ 
+    inner join
+        order_entity order1_ 
+            on orders0_.orders_id=order1_.id 
+    left outer join
+        user user2_ 
+            on order1_.user_id=user2_.id 
+    where
+        orders0_.products_id=?
+2019-08-09 15:06:58.217 TRACE 16132 --- [http-nio-5055-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [3]
+2019-08-09 15:06:58.227 DEBUG 16132 --- [http-nio-5055-exec-8] org.hibernate.SQL                        : 
+    select
+        baskets0_.products_id as products1_4_0_,
+        baskets0_.baskets_id as baskets_2_4_0_,
+        basket1_.id as id1_0_1_,
+        basket1_.name as name2_0_1_,
+        basket1_.user_id as user_id3_0_1_ 
+    from
+        product_baskets baskets0_ 
+    inner join
+        basket basket1_ 
+            on baskets0_.baskets_id=basket1_.id 
+    where
+        baskets0_.products_id=?
+2019-08-09 15:06:58.231 TRACE 16132 --- [http-nio-5055-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [3]
+2019-08-09 15:06:58.234 DEBUG 16132 --- [http-nio-5055-exec-8] org.hibernate.SQL                        : 
+    select
+        orders0_.products_id as products1_5_0_,
+        orders0_.orders_id as orders_i2_5_0_,
+        order1_.id as id1_1_1_,
+        order1_.user_id as user_id2_1_1_,
+        user2_.id as id1_6_2_,
+        user2_.user_name as user_nam2_6_2_ 
+    from
+        product_orders orders0_ 
+    inner join
+        order_entity order1_ 
+            on orders0_.orders_id=order1_.id 
+    left outer join
+        user user2_ 
+            on order1_.user_id=user2_.id 
+    where
+        orders0_.products_id=?
+2019-08-09 15:06:58.235 TRACE 16132 --- [http-nio-5055-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [8]
+2019-08-09 15:06:58.239 DEBUG 16132 --- [http-nio-5055-exec-8] org.hibernate.SQL                        : 
+    select
+        baskets0_.products_id as products1_4_0_,
+        baskets0_.baskets_id as baskets_2_4_0_,
+        basket1_.id as id1_0_1_,
+        basket1_.name as name2_0_1_,
+        basket1_.user_id as user_id3_0_1_ 
+    from
+        product_baskets baskets0_ 
+    inner join
+        basket basket1_ 
+            on baskets0_.baskets_id=basket1_.id 
+    where
+        baskets0_.products_id=?
+2019-08-09 15:06:58.240 TRACE 16132 --- [http-nio-5055-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [8]
+2019-08-09 18:39:32.099  WARN 16132 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h49m15s334ms784µs600ns).

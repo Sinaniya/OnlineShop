@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
             repository.save(product);
             return;
         }
-        throw new RuntimeException("product already exists");
+
     }
 
     @Transactional
@@ -47,18 +47,22 @@ public class ProductServiceImpl implements ProductService {
         Product product = repository.findProductById(id).orElseThrow(() -> new ResourceNotFoundException("Resource Not Found!"));
         repository.deleteById(product.getId());
     }
+
+
+
+
     @Transactional
     @Override
-    public void update(Product product , long id){
+    public void update(Product product , Long id){
 
-       if(repository.findProductById(id).isPresent()){
-           Optional <Product> UpdatedProduct;
-           UpdateProduct.setName(repository.findProductById(id).getName());
+        if(repository.findProductById(id).isPresent()) {
+            Optional<Product> tobeUpdated =repository.findProductById(id);
+            tobeUpdated.get().setName(product.getName());
+            return;
+        }
+        throw new RuntimeException("product doesnt exist");
+
+    }
 
 
-       }
-
-
-
-}
 }

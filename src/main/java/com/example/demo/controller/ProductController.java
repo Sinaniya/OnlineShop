@@ -38,10 +38,10 @@ public class ProductController {
 
     }
 
-
     @PutMapping("products")
-    public ResponseEntity update(@RequestBody ProductDto productDto){
-        service.
+    public ResponseEntity update(@RequestBody ProductDto productDto, Long id){
+        service.update(mapper.toProduct(productDto),id);
+        return ResponseEntity.status(HttpStatus.OK).build();
 
     }
 

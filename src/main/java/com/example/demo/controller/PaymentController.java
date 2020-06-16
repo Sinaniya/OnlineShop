@@ -1,12 +1,14 @@
  package com.example.demo.controller;
 
 import com.example.demo.exceptions.ResourceNotFoundException;
+import com.example.demo.model.resource.UserDto;
 import com.example.demo.services.PaymentService;
 import com.example.demo.mappings.PaymentMapper;
 import com.example.demo.model.Payment;
 import com.example.demo.model.resource.PaymentDto;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +43,13 @@ public class PaymentController {
         service.deleteById(id);
         return ResponseEntity.ok().build();
 
+    }
+
+
+    @PostMapping
+    public ResponseEntity create(@RequestBody PaymentDto paymentDto) {
+        service.save(mapper.toPayment(paymentDto));
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
 }

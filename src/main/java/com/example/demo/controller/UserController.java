@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1/user")
 public class UserController {
 
     @Autowired
@@ -32,6 +32,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity create(@RequestBody UserDto userDto) {
         service.save(mapper.toUser(userDto));
+        //service.addOrder(userDto.getId());
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

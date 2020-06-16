@@ -22,6 +22,7 @@ public class PaymentServiceImpl implements PaymentService{
     @Transactional
     @Override
     public void save(Payment payment) {
+       //Optional <Payment> p= repository.findByPaymentId(payment.getPaymentId())
         repository.save(payment);
 
     }

@@ -38,11 +38,12 @@ public class UserDto implements Serializable {
         this.orders = orders;
     }
 
-    public List<BasketDto> getBaskets() {
+  public List<BasketDto> getBaskets() {
         return baskets;
     }
 
     public void setBaskets(List<BasketDto> baskets) {
         this.baskets = baskets;
     }
+
 }

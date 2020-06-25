@@ -3,6 +3,7 @@ package com.example.demo.services;
 import com.example.demo.model.Basket;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BasketService {
 
@@ -17,4 +18,6 @@ public interface BasketService {
     void deleteByName(String name);
 
     void deleteById(Long id);
+
+  Optional<Basket> findById(long basketId);
 }

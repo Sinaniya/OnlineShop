@@ -1,6 +1,8 @@
 package com.example.demo.services;
 
+import com.example.demo.model.Basket;
 import com.example.demo.model.Order;
+import com.example.demo.model.Product;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.model.User;
@@ -96,6 +98,47 @@ public class UserServiceImpl implements UserService {
         repository.save(user);
 
         orderService.deleteById(order.getId());
+
+    }
+    @Transactional
+    @Override
+    public void removeBasket(long userId, Basket basket) {
+        if(basket.getUser().getId() != userId){
+            throw new RuntimeException("Bad request!");
+        }
+
+        User user = repository.findUserById(userId).orElseThrow(() -> {
+            return new RuntimeException("User not found");
+        });
+
+        user.removeBasket(basket);
+
+        repository.save(user);
+
+        orderService.deleteById(basket.getId());
+
+    }
+
+    @Transactional
+    @Override
+    public void addBasket(long userId, Basket basket) {
+        User user = repository.findUserById(userId).orElseThrow(() -> {
+            return new RuntimeException("User not found");
+        });
+
+
+        user.addBasket(basket);
+
+        repository.save(user);
+    }
+
+    @Transactional
+    @Override
+    public void addProduct(long userId, long basketId, Product product){
+        User user = repository.findUserById(userId).orElseThrow(() -> {
+            return new RuntimeException("User not found");
+        });
+        user.addProduct(basketId,product);
 
     }
 

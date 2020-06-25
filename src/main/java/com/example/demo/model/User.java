@@ -69,4 +69,17 @@ public class User implements Serializable {
     }
 
 
+    public void removeBasket(Basket basket) {
+        this.orders.remove(basket);
+        basket.setUser(null); //+ add + remove basket
+    }
+
+    public void addBasket(Basket basket) {
+        basket.setUser(this);
+        this.baskets.add(basket);
+    }
+
+    public void addProduct(long basketId, Product product) {
+     product.setBaskets(this.baskets.get(basketId));
+    }
 }

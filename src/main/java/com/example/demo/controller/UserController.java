@@ -1,11 +1,15 @@
 package com.example.demo.controller;
 
 import com.example.demo.exceptions.ResourceNotFoundException;
+import com.example.demo.mappings.BasketMapper;
 import com.example.demo.mappings.OrderMapper;
 import com.example.demo.mappings.UserMapper;
 import com.example.demo.model.User;
+import com.example.demo.model.resource.BasketDto;
 import com.example.demo.model.resource.OrderDto;
+import com.example.demo.model.resource.ProductDto;
 import com.example.demo.model.resource.UserDto;
+import com.example.demo.services.BasketService;
 import com.example.demo.services.OrderService;
 import com.example.demo.services.UserService;
 import org.mapstruct.factory.Mappers;
@@ -14,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -25,8 +30,10 @@ public class UserController {
 
     @Autowired
     OrderService orderService;
+    BasketService basketService;
     UserMapper  mapper      = Mappers.getMapper(UserMapper.class);
     OrderMapper orderMapper = Mappers.getMapper(OrderMapper.class);
+    BasketMapper basketMapper = Mappers.getMapper(BasketMapper.class);
 
 
     @PostMapping
@@ -57,6 +64,15 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @DeleteMapping("users/{id}")
+    public ResponseEntity deleteUser(@PathVariable("id") long id) {
+
+        service.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("users/{id}/orders/{orderId}")
     public ResponseEntity deleteOrder(@PathVariable long id, @PathVariable long orderId) {
         service.removeOrder(id, orderService.findById(orderId).orElseThrow(() -> {
@@ -65,13 +81,35 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
-    @DeleteMapping("users/{id}")
-    public ResponseEntity deleteUser(@PathVariable("id") long id) {
+    @PostMapping("users/{id}/baskets")
+    public ResponseEntity createBasket(@PathVariable long id, @RequestBody BasketDto dto) {
+        service.addBasket(id, basketMapper.toBasket(dto));
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 
-        service.deleteById(id);
-        return ResponseEntity.ok().build();
+    @DeleteMapping("users/{id}/baskets/{basketId}")
+    public ResponseEntity deleteBasket(@PathVariable long id, @PathVariable long basketId) {
+
+        service.removeBasket(id, basketService.findById(basketId).orElseThrow(() -> {
+            return new RuntimeException("Basket not found!");
+        }));
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
+
+
+@PostMapping("users/{id}/baskets/{basketId}/products")
+        public ResponseEntity createProduct(@PathVariable long id, @PathVariable long basketId, @RequestBody ProductDto dto){
+
+        service.addProduct(id,basketService.findById(basketId).orElseThrow(() -> {
+            return new RuntimeException("Basket not found!");
+        }));
+        service.addProduct(id, basketId, productMapper.topProduct(dto));
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
 
     }
+
+
+
 
 }

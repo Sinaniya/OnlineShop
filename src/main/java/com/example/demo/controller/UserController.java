@@ -5,10 +5,10 @@ import com.example.demo.mappings.BasketMapper;
 import com.example.demo.mappings.OrderMapper;
 import com.example.demo.mappings.UserMapper;
 import com.example.demo.model.User;
+import com.example.demo.model.requests.basket.BasketCreateRequestDto;
 import com.example.demo.model.requests.product.AddProductToBasketRequestDto;
-import com.example.demo.model.resource.BasketDto;
+import com.example.demo.model.requests.user.UserRegistrationRequestDto;
 import com.example.demo.model.resource.OrderDto;
-import com.example.demo.model.resource.ProductDto;
 import com.example.demo.model.resource.UserDto;
 import com.example.demo.services.BasketService;
 import com.example.demo.services.OrderService;
@@ -19,7 +19,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -38,8 +37,8 @@ public class UserController {
 
 
     @PostMapping
-    public ResponseEntity create(@RequestBody UserDto userDto) {
-        service.save(mapper.toUser(userDto));
+    public ResponseEntity create(@RequestBody UserRegistrationRequestDto registrationRequestDto) {
+        service.save(mapper.toUser(registrationRequestDto));
         //service.addOrder(userDto.getId());
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
@@ -82,18 +81,16 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PostMapping("/{id}/baskets")
-    public ResponseEntity createBasket(@PathVariable long id, @RequestBody BasketDto dto) {
-        service.addBasket(id, basketMapper.toBasket(dto));
+    @PostMapping("/{id}/basket")
+    public ResponseEntity createBasket(@PathVariable long id, @RequestBody BasketCreateRequestDto dto) {
+        service.addBasket(id);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @DeleteMapping("users/{id}/baskets/{basketId}")
-    public ResponseEntity deleteBasket(@PathVariable long id, @PathVariable long basketId) {
+    @DeleteMapping("users/{id}/baskets/")
+    public ResponseEntity deleteBasket(@PathVariable long id) {
 
-        service.removeBasket(id, basketService.findById(basketId).orElseThrow(() -> {
-            return new RuntimeException("Basket not found!");
-        }));
+        service.removeBasket(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
@@ -102,10 +99,6 @@ public class UserController {
     public ResponseEntity createProduct(@PathVariable("id") long id, @PathVariable long basketId, @RequestBody AddProductToBasketRequestDto dto) {
 
         service.addProductToBasket(id, basketId, dto.getProductId());
-//        service.addProduct(id,basketService.findById(basketId).orElseThrow(() -> {
-//            return new RuntimeException("Basket not found!");
-//        }));
-//        service.addProduct(id, basketId, productMapper.topProduct(dto));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

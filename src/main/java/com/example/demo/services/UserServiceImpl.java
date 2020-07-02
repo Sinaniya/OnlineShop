@@ -1,6 +1,5 @@
 package com.example.demo.services;
 
-import com.example.demo.exceptions.basket.BasketNotFoundException;
 import com.example.demo.exceptions.users.UserNotFoundException;
 import com.example.demo.model.Basket;
 import com.example.demo.model.Order;
@@ -14,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @Transactional(readOnly = true)
@@ -107,57 +107,56 @@ public class UserServiceImpl implements UserService {
     }
     @Transactional
     @Override
-    public void removeBasket(long userId, Basket basket) {
-        if(basket.getUser().getId() != userId){
-            throw new RuntimeException("Bad request!");
+    public void removeBasket(long userId) {
+//        if(basket.getUser().getId() != userId){
+//            throw new RuntimeException("Bad request!");
+//        }
+
+        User user = repository.findUserById(userId).orElseThrow(() -> {
+            return new RuntimeException("User not found");
+        });
+
+        if(user.getBasket() != null){
+            user.getBasket().setUser(null);
+            user.setBasket(null);
         }
-
-        User user = repository.findUserById(userId).orElseThrow(() -> {
-            return new RuntimeException("User not found");
-        });
-
-        user.removeBasket(basket);
+//
+//        user.removeBasket(basket);
 
         repository.save(user);
 
-        orderService.deleteById(basket.getId());
+        //orderService.deleteById(basket.getId());
 
     }
 
     @Transactional
     @Override
-    public void addBasket(long userId, Basket basket) {
+    public void addBasket(long userId) {
         User user = repository.findUserById(userId).orElseThrow(() -> {
             return new RuntimeException("User not found");
         });
+        Basket basket = new Basket();
+        basket.setName(UUID.randomUUID().toString());
+
+        basket.setUser(user);
+        user.setBasket(basket);
 
 
-        user.addBasket(basket);
+        //user.addBasket(basket);
 
         repository.save(user);
     }
 
-    @Transactional
-    @Override
-    public void addProduct(long userId, long basketId, Product product){
-//        User user = repository.findUserById(userId).orElseThrow(() -> {
-//            return new RuntimeException("User not found");
-//        });
-//        user.addProduct(basketId,product);
 
-
-    }
 
     @Transactional
     @Override
     public void addProductToBasket(long id, long basketId, long productId) {
         User user = repository.findById(id).orElseThrow(UserNotFoundException::new);
         Basket basket = user
-                .getBaskets()
-                .stream()
-                .filter(b -> b.getId() == basketId)
-                .findFirst()
-                .orElseThrow(BasketNotFoundException::new);
+                .getBasket();
+              //  .getId() == basketId
+               // .orElseThrow(BasketNotFoundException::new);
         Product product = productService.findById(productId);
         basket.addProduct(product);
         repository.save(user);

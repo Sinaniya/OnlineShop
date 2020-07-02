@@ -8,7 +8,7 @@ public class UserDto implements Serializable {
     private long            id;
     private String          name;
     private List<OrderDto>  orders;
-    private List<BasketDto> baskets;
+    private BasketDto basket;
 
     public UserDto() {
     }
@@ -38,12 +38,12 @@ public class UserDto implements Serializable {
         this.orders = orders;
     }
 
-  public List<BasketDto> getBaskets() {
-        return baskets;
+  public BasketDto getBasket() {
+        return basket;
     }
 
-    public void setBaskets(List<BasketDto> baskets) {
-        this.baskets = baskets;
+    public void setBasket(BasketDto basket) {
+        this.basket = basket;
     }
 
 }

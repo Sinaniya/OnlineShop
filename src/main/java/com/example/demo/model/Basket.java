@@ -19,7 +19,7 @@ public class Basket implements Serializable {
     private long id;
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
 
@@ -64,7 +64,7 @@ public class Basket implements Serializable {
 
 
     public void addProduct(Product product){
-        product.getBaskets().add(this);//+
+        product.getBaskets().add(this);
         this.products.add(product);
 
     }

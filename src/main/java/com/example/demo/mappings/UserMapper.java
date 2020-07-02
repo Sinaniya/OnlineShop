@@ -2,6 +2,7 @@ package com.example.demo.mappings;
 
 
 import com.example.demo.model.User;
+import com.example.demo.model.requests.user.UserRegistrationRequestDto;
 import com.example.demo.model.resource.UserDto;
 import org.mapstruct.InheritConfiguration;
 import org.mapstruct.InheritInverseConfiguration;
@@ -25,5 +26,8 @@ public interface UserMapper {
 
     @InheritInverseConfiguration
     List<User> toUsers(List<UserDto> userDtoList);
+
+    @Mapping(source = "username", target="userName")
+    User toUser(UserRegistrationRequestDto registrationRequestDto);
 
 }

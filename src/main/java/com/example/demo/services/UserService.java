@@ -1,8 +1,6 @@
 package com.example.demo.services;
 
-import com.example.demo.model.Basket;
 import com.example.demo.model.Order;
-import com.example.demo.model.Product;
 import com.example.demo.model.User;
 
 import java.util.List;
@@ -23,11 +21,11 @@ public interface UserService {
 
     void removeOrder(long userId, Order order);
     
-    void removeBasket(long userId, Basket basket);
+    void removeBasket(long userId);
 
-    void addBasket(long id, Basket toBasket);
+    void addBasket(long id);
 
-    void addProduct(long id, long basketId, Product product);
+    //void addProduct(long id, long basketId, Product product);
 
     void addProductToBasket(long id, long basketId, long productId);
 }

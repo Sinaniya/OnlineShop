@@ -14,15 +14,17 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long   id;
     private String userName;
+    private String password;
     // @
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Basket> baskets = new ArrayList<>();
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true) //do we need this?
+    private Basket basket = new Basket(); // is this correct?
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Order> orders = new ArrayList<>();
 
     public User() {
+        this.basket.setUser(this);
     }
 
     public long getId() {
@@ -41,12 +43,12 @@ public class User implements Serializable {
         this.userName = userName;
     }
 
-    public List<Basket> getBaskets() {
-        return baskets;
+    public Basket getBasket() {
+        return basket;
     }
 
-    public void setBaskets(List<Basket> baskets) {
-        this.baskets = baskets;
+    public void setBasket(Basket basket) {
+        this.basket = basket;
     }
 
     public List<Order> getOrders() {
@@ -70,16 +72,14 @@ public class User implements Serializable {
 
 
     public void removeBasket(Basket basket) {
-        this.orders.remove(basket);
+        //this.orders.remove(basket);
         basket.setUser(null); //+ add + remove basket
     }
 
-    public void addBasket(Basket basket) {
-        basket.setUser(this);
-        this.baskets.add(basket);
-    }
-
-//    public void addProduct(long basketId, Product product) {
-//     product.setBaskets(this.baskets.get(basketId));
+//    public void addBasket(Basket basket) {
+//        basket.setUser(this);
+//        //this.basket.add(basket);
 //    }
+
+
 }

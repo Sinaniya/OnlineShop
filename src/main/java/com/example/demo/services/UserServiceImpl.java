@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import com.example.demo.exceptions.basket.BasketNotFoundException;
+import com.example.demo.exceptions.users.UserNotFoundException;
 import com.example.demo.model.Basket;
 import com.example.demo.model.Order;
 import com.example.demo.model.Product;
@@ -22,6 +24,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private ProductService productService;
 
     @Override
     public List<User> findAll() {
@@ -135,10 +140,27 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void addProduct(long userId, long basketId, Product product){
-        User user = repository.findUserById(userId).orElseThrow(() -> {
-            return new RuntimeException("User not found");
-        });
-        user.addProduct(basketId,product);
+//        User user = repository.findUserById(userId).orElseThrow(() -> {
+//            return new RuntimeException("User not found");
+//        });
+//        user.addProduct(basketId,product);
+
+
+    }
+
+    @Transactional
+    @Override
+    public void addProductToBasket(long id, long basketId, long productId) {
+        User user = repository.findById(id).orElseThrow(UserNotFoundException::new);
+        Basket basket = user
+                .getBaskets()
+                .stream()
+                .filter(b -> b.getId() == basketId)
+                .findFirst()
+                .orElseThrow(BasketNotFoundException::new);
+        Product product = productService.findById(productId);
+        basket.addProduct(product);
+        repository.save(user);
 
     }
 

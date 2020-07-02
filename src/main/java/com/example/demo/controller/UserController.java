@@ -5,6 +5,7 @@ import com.example.demo.mappings.BasketMapper;
 import com.example.demo.mappings.OrderMapper;
 import com.example.demo.mappings.UserMapper;
 import com.example.demo.model.User;
+import com.example.demo.model.requests.product.AddProductToBasketRequestDto;
 import com.example.demo.model.resource.BasketDto;
 import com.example.demo.model.resource.OrderDto;
 import com.example.demo.model.resource.ProductDto;
@@ -22,7 +23,7 @@ import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1/users")
 public class UserController {
 
     @Autowired
@@ -31,7 +32,7 @@ public class UserController {
     @Autowired
     OrderService orderService;
     BasketService basketService;
-    UserMapper  mapper      = Mappers.getMapper(UserMapper.class);
+    UserMapper mapper = Mappers.getMapper(UserMapper.class);
     OrderMapper orderMapper = Mappers.getMapper(OrderMapper.class);
     BasketMapper basketMapper = Mappers.getMapper(BasketMapper.class);
 
@@ -81,7 +82,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PostMapping("users/{id}/baskets")
+    @PostMapping("/{id}/baskets")
     public ResponseEntity createBasket(@PathVariable long id, @RequestBody BasketDto dto) {
         service.addBasket(id, basketMapper.toBasket(dto));
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -97,19 +98,19 @@ public class UserController {
     }
 
 
-@PostMapping("users/{id}/baskets/{basketId}/products")
-        public ResponseEntity createProduct(@PathVariable long id, @PathVariable long basketId, @RequestBody ProductDto dto){
+    @PostMapping("/{id}/baskets/{basketId}/products/")
+    public ResponseEntity createProduct(@PathVariable("id") long id, @PathVariable long basketId, @RequestBody AddProductToBasketRequestDto dto) {
 
-        service.addProduct(id,basketService.findById(basketId).orElseThrow(() -> {
-            return new RuntimeException("Basket not found!");
-        }));
-        service.addProduct(id, basketId, productMapper.topProduct(dto));
+        service.addProductToBasket(id, basketId, dto.getProductId());
+//        service.addProduct(id,basketService.findById(basketId).orElseThrow(() -> {
+//            return new RuntimeException("Basket not found!");
+//        }));
+//        service.addProduct(id, basketId, productMapper.topProduct(dto));
         return ResponseEntity.status(HttpStatus.CREATED).build();
-        }
-
     }
 
-
-
-
 }
+
+
+
+

@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class Product implements Serializable {
 
     @ManyToMany(fetch= FetchType.LAZY)
     private List<Order> orders = new ArrayList<>();
+
 
 
     @ManyToMany(fetch= FetchType.LAZY)

@@ -11,9 +11,9 @@ import java.util.List;
 public interface ProductMapper {
 
     @Mappings(value = {
-            @Mapping(source = "id",target = "id"),
-            @Mapping(target = "orderIds", expression = "java(product.getOrders().stream().map(order -> order.getId()).collect(java.util.stream.Collectors.toList()))"),
-            @Mapping(target = "basketIds", expression = "java(product.getBaskets().stream().map(basket -> basket.getId()).collect(java.util.stream.Collectors.toList()))")
+            @Mapping(source = "id",target = "id")
+//            @Mapping(target = "orderIds", expression = "java(product.getOrders().stream().map(order -> order.getId()).collect(java.util.stream.Collectors.toList()))"),
+//            @Mapping(target = "basketIds", expression = "java(product.getBaskets().stream().map(basket -> basket.getId()).collect(java.util.stream.Collectors.toList()))")
     })
     ProductDto toProductDto(Product product);
 

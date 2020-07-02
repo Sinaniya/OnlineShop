@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.exceptions.product.ProductNotFoundException;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.model.Product;
@@ -21,6 +22,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Product findById(long id) {
+
+        return repository.findById(id).orElseThrow(ProductNotFoundException::new);
     }
 
     @Transactional

@@ -79,7 +79,7 @@ public class User implements Serializable {
         this.baskets.add(basket);
     }
 
-    public void addProduct(long basketId, Product product) {
-     product.setBaskets(this.baskets.get(basketId));
-    }
+//    public void addProduct(long basketId, Product product) {
+//     product.setBaskets(this.baskets.get(basketId));
+//    }
 }

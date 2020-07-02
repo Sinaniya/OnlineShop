@@ -6,8 +6,8 @@ import java.util.List;
 public class ProductDto implements Serializable {
     private long            id;
     private String          name;
-    private List<Long> basketIds;
-    private List<Long> orderIds;
+//    private List<Long> basketIds;
+//    private List<Long> orderIds;
 
     public ProductDto() {
     }
@@ -28,19 +28,19 @@ public class ProductDto implements Serializable {
         this.name = name;
     }
 
-    public List<Long> getBasketIds() {
-        return basketIds;
-    }
-
-    public void setBasketIds(List<Long> basketIds) {
-        this.basketIds = basketIds;
-    }
-
-    public List<Long> getOrderIds() {
-        return orderIds;
-    }
-
-    public void setOrderIds(List<Long> orderIds) {
-        this.orderIds = orderIds;
-    }
+//    public List<Long> getBasketIds() {
+//        return basketIds;
+//    }
+//
+//    public void setBasketIds(List<Long> basketIds) {
+//        this.basketIds = basketIds;
+//    }
+//
+//    public List<Long> getOrderIds() {
+//        return orderIds;
+//    }
+//
+//    public void setOrderIds(List<Long> orderIds) {
+//        this.orderIds = orderIds;
+//    }
 }

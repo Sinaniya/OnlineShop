@@ -27,5 +27,7 @@ public interface UserService {
 
     void addBasket(long id, Basket toBasket);
 
-    void addProduct(long id, long baskeId, Product product);
+    void addProduct(long id, long basketId, Product product);
+
+    void addProductToBasket(long id, long basketId, long productId);
 }
